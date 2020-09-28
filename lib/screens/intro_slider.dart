@@ -75,6 +75,7 @@ class _IntroSliderState extends State<IntroSlider> {
           ),
           Container(
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 for (int i = 0; i < 4; i++)
                   i == slideIndex
@@ -89,6 +90,11 @@ class _IntroSliderState extends State<IntroSlider> {
           InkWell(
             onTap: () {
               print("Get Started Now");
+              controller.animateToPage(
+                slideIndex + 1,
+                duration: Duration(milliseconds: 500),
+                curve: Curves.linear,
+              );
             },
             child: Container(
               height: 60,
@@ -111,17 +117,18 @@ class _IntroSliderState extends State<IntroSlider> {
             height: 20.0,
           ),
           InkWell(
-              onTap: () {
-                print("Get Started Now");
-              },
-              child: Text(
-                'Skip to Login',
-                style: TextStyle(
-                  color: cPrimaryColor,
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.w400,
-                ),
-              )),
+            onTap: () {
+              print("Get Started Now");
+            },
+            child: Text(
+              'Skip to Login',
+              style: TextStyle(
+                color: cPrimaryColor,
+                fontSize: 16.0,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+          ),
         ],
       ),
     );
