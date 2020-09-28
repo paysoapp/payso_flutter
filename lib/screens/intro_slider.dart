@@ -4,6 +4,7 @@ import 'package:payso/model/intro_slider_model.dart';
 import 'package:payso/widgets/slide_tile.dart';
 
 class IntroSlider extends StatefulWidget {
+  static const String id = 'intro_slider';
   @override
   _IntroSliderState createState() => _IntroSliderState();
 }
