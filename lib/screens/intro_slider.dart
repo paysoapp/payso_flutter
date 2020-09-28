@@ -124,69 +124,6 @@ class _IntroSliderState extends State<IntroSlider> {
               )),
         ],
       ),
-//        bottomSheet: slideIndex != 2
-//            ? Container(
-//                margin: EdgeInsets.symmetric(vertical: 16),
-//                child: Row(
-//                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                  children: <Widget>[
-//                    FlatButton(
-//                      onPressed: () {
-//                        controller.animateToPage(2,
-//                            duration: Duration(milliseconds: 400),
-//                            curve: Curves.linear);
-//                      },
-//                      splashColor: Colors.blue[50],
-//                      child: Text(
-//                        "SKIP",
-//                        style: TextStyle(
-//                            color: Color(0xFF0074E4),
-//                            fontWeight: FontWeight.w600),
-//                      ),
-//                    ),
-//                    Container(
-//                      child: Row(
-//                        children: [
-//                          for (int i = 0; i < 3; i++)
-//                            i == slideIndex
-//                                ? _buildPageIndicator(true)
-//                                : _buildPageIndicator(false),
-//                        ],
-//                      ),
-//                    ),
-//                    FlatButton(
-//                      onPressed: () {
-//                        print("this is slideIndex: $slideIndex");
-//                        controller.animateToPage(slideIndex + 1,
-//                            duration: Duration(milliseconds: 500),
-//                            curve: Curves.linear);
-//                      },
-//                      splashColor: Colors.blue[50],
-//                      child: Text(
-//                        "NEXT",
-//                        style: TextStyle(
-//                            color: Color(0xFF0074E4),
-//                            fontWeight: FontWeight.w600),
-//                      ),
-//                    ),
-//                  ],
-//                ),
-//              )
-//            : InkWell(
-//                onTap: () {
-//                  print("Get Started Now");
-//                },
-//                child: Container(
-//                  height: 60,
-//                  color: Colors.blue,
-//                  alignment: Alignment.center,
-//                  child: Text(
-//                    "GET STARTED NOW",
-//                    style: TextStyle(
-//                        color: Colors.white, fontWeight: FontWeight.w600),
-//                  ),
-//                ),
-//              ),
     );
   }
 }
