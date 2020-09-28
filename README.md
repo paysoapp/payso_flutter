@@ -1,4 +1,4 @@
-# payso
+# Payso
 
 Payso is a digital wallet platform and online payment comapany headquartered in Philippines.
 
