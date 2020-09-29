@@ -90,12 +90,16 @@ class _IntroSliderState extends State<IntroSlider> {
           ),
           InkWell(
             onTap: () {
-              print("Get Started Now");
-              controller.animateToPage(
-                slideIndex + 1,
-                duration: Duration(milliseconds: 500),
-                curve: Curves.linear,
-              );
+              if (slideIndex != 3) {
+                print("Get Started Now");
+                controller.animateToPage(
+                  slideIndex + 1,
+                  duration: Duration(milliseconds: 500),
+                  curve: Curves.linear,
+                );
+              } else {
+                Navigator.pushNamed(context, RegisterScreen.id);
+              }
             },
             child: Container(
               height: 60,

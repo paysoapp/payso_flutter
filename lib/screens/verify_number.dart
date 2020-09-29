@@ -3,11 +3,11 @@ import 'package:payso/constants.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 class VerifyNumber extends StatelessWidget {
-  VerifyNumber({this.mobileNumber});
-  static const String id = 'verify_number';
-
   final String mobileNumber;
   var otp;
+  static const String id = 'verify_number';
+
+  VerifyNumber({this.mobileNumber});
 
   @override
   Widget build(BuildContext context) {
@@ -41,20 +41,6 @@ class VerifyNumber extends StatelessWidget {
                     ],
                   ),
                 ),
-                // FlatButton(
-                //   onPressed: null,
-                //   child: Row(
-                //     children: [
-                //       Text(
-                //         'Change Mobile #',
-                //         style: TextStyle(fontWeight: FontWeight.w700),
-                //       ),
-                //       Icon(
-                //         Icons.arrow_forward,
-                //       ),
-                //     ],
-                //   ),
-                // ),
               ],
             ),
             SizedBox(
@@ -83,7 +69,7 @@ class VerifyNumber extends StatelessWidget {
                     height: 10,
                   ),
                   Text(
-                    'Enter a 6 digit number sent to \n +91 6544878778',
+                    'Enter a 6 digit number sent to \n +91 ${mobileNumber}',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontWeight: FontWeight.w500,

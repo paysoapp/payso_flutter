@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:payso/constants.dart';
+import 'package:payso/screens/verify_number.dart';
 
 class RegisterScreen extends StatefulWidget {
   static const String id = 'register_screen';
@@ -9,7 +10,7 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-  String phoneNumberFiled = '';
+  String phoneNumber = '';
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -60,7 +61,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 width: MediaQuery.of(context).size.width / 1.1,
                 child: TextFormField(
                   onChanged: (value) {
-                    phoneNumberFiled = value;
+                    phoneNumber = value;
                   },
                   validator: (value) {
                     if (value.isEmpty || value.length != 10) {
@@ -70,7 +71,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   },
                   onFieldSubmitted: (value) {
                     if (_formKey.currentState.validate()) {
-                      print('Navigate to Otp page');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => VerifyNumber(
+                            mobileNumber: phoneNumber,
+                          ),
+                        ),
+                      );
                     }
                   },
                   maxLength: 10,
@@ -121,7 +129,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 onTap: () {
                   //TODO: Navigate to OTP
                   if (_formKey.currentState.validate()) {
-                    print('Navigate to Otp page');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => VerifyNumber(
+                          mobileNumber: phoneNumber,
+                        ),
+                      ),
+                    );
                   }
                 },
                 child: Container(
@@ -137,7 +152,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   child: Text(
                     "GET OTP",
                     style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.w600),
+                      color: Colors.white,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
               ),
