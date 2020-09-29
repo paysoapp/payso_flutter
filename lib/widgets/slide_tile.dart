@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:payso/costants.dart';
+import 'package:payso/constants.dart';
 
 class SlideTile extends StatelessWidget {
   final String imagePath, title, desc;

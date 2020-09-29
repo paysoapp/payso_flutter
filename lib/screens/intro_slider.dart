@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:payso/costants.dart';
+import 'package:payso/constants.dart';
 import 'package:payso/model/intro_slider_model.dart';
+import 'package:payso/screens/register_screen.dart';
 import 'package:payso/widgets/slide_tile.dart';
 
 class IntroSlider extends StatefulWidget {
@@ -118,7 +119,7 @@ class _IntroSliderState extends State<IntroSlider> {
           ),
           InkWell(
             onTap: () {
-              print("Get Started Now");
+              Navigator.pushNamed(context, RegisterScreen.id);
             },
             child: Text(
               'Skip to Login',

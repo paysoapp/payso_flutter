@@ -13,8 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'PaySo App',
-      initialRoute: RegisterScreen.id,
-//      initialRoute: SplashScreen.id,
+      initialRoute: SplashScreen.id,
       routes: {
         SplashScreen.id: (context) => SplashScreen(),
         IntroSlider.id: (context) => IntroSlider(),
