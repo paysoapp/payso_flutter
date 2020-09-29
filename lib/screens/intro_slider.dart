@@ -108,9 +108,11 @@ class _IntroSliderState extends State<IntroSlider> {
               width: MediaQuery.of(context).size.width - 80,
               alignment: Alignment.center,
               child: Text(
-                "GET STARTED NOW",
-                style:
-                    TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+                mySLides[slideIndex].getButtonTitle(),
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
             ),
           ),
