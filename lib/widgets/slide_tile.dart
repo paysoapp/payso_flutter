@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:payso/costants.dart';
 
 class SlideTile extends StatelessWidget {
   final String imagePath, title, desc;
@@ -20,10 +21,7 @@ class SlideTile extends StatelessWidget {
           Text(
             title,
             textAlign: TextAlign.center,
-            style: TextStyle(
-              fontWeight: FontWeight.w600,
-              fontSize: 24,
-            ),
+            style: cHeadStyle,
           ),
           SizedBox(
             height: 20,
@@ -31,12 +29,7 @@ class SlideTile extends StatelessWidget {
           Text(
             desc,
             textAlign: TextAlign.center,
-            style: TextStyle(
-              fontWeight: FontWeight.w500,
-              fontSize: 16,
-              color: Colors.grey,
-              letterSpacing: 1.0,
-            ),
+            style: cTextStyle,
           )
         ],
       ),

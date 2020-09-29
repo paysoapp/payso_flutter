@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:payso/screens/intro_slider.dart';
+import 'package:payso/screens/register_screen.dart';
 import 'package:payso/screens/splash_screen.dart';
 
 void main() {
@@ -12,10 +13,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'PaySo App',
-      initialRoute: SplashScreen.id,
+      initialRoute: RegisterScreen.id,
+//      initialRoute: SplashScreen.id,
       routes: {
         SplashScreen.id: (context) => SplashScreen(),
         IntroSlider.id: (context) => IntroSlider(),
+        RegisterScreen.id: (context) => RegisterScreen(),
       },
     );
   }
