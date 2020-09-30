@@ -29,7 +29,6 @@ class _IntroSliderState extends State<IntroSlider> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     mySLides = getSlides();
     controller = new PageController();

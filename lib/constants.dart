@@ -15,3 +15,9 @@ const cTextStyle = TextStyle(
   color: Colors.grey,
   letterSpacing: 1.0,
 );
+
+const cFormFieldStyle = TextStyle(
+  fontWeight: FontWeight.w500,
+  fontSize: 18.0,
+  letterSpacing: 1.0,
+);

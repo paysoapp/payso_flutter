@@ -82,11 +82,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     }
                   },
                   maxLength: 10,
-                  style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 18.0,
-                    letterSpacing: 1.0,
-                  ),
+                  style: cFormFieldStyle,
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                     hintText: 'Enter Phone Number',

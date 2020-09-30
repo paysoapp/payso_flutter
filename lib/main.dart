@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:payso/screens/complete_profile.dart';
 import 'package:payso/screens/intro_slider.dart';
 import 'package:payso/screens/register_screen.dart';
 import 'package:payso/screens/splash_screen.dart';
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
         IntroSlider.id: (context) => IntroSlider(),
         RegisterScreen.id: (context) => RegisterScreen(),
         VerifyNumber.id: (context) => VerifyNumber(),
+        CompleteProfile.id: (context) => CompleteProfile(),
       },
     );
   }
