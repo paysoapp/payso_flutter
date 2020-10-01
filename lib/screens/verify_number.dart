@@ -1,15 +1,31 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:payso/constants.dart';
-import 'package:payso/screens/complete_profile.dart';
+import 'package:payso/model/register_user.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
-class VerifyNumber extends StatelessWidget {
+class VerifyNumber extends StatefulWidget {
   final String mobileNumber;
-  var otp;
   static const String id = 'verify_number';
-  final _formKey = GlobalKey<FormState>();
 
   VerifyNumber({this.mobileNumber});
+
+  @override
+  _VerifyNumberState createState() => _VerifyNumberState();
+}
+
+class _VerifyNumberState extends State<VerifyNumber> {
+  String otp = '';
+  UserCredential user;
+  final _formKey = GlobalKey<FormState>();
+  RegisterUser registerUser = RegisterUser();
+  FirebaseAuth _auth = FirebaseAuth.instance;
+
+  @override
+  void initState() {
+    registerUser.registerUser(widget.mobileNumber, context, _auth, otp);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +91,7 @@ class VerifyNumber extends StatelessWidget {
                       height: 10,
                     ),
                     Text(
-                      'Enter a 6 digit number sent to \n +91 ${mobileNumber}',
+                      'Enter a 6 digit number sent to \n +91 ${widget.mobileNumber}',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontWeight: FontWeight.w500,
@@ -91,7 +107,9 @@ class VerifyNumber extends StatelessWidget {
                 height: 20,
               ),
               FlatButton(
-                onPressed: null,
+                onPressed: () {
+                  print("Resend OTP");
+                },
                 child: Text(
                   'Re Send Code',
                   style: TextStyle(
@@ -115,12 +133,15 @@ class VerifyNumber extends StatelessWidget {
                     },
                     onSubmitted: (value) {
                       if (_formKey.currentState.validate()) {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => CompleteProfile(),
-                          ),
-                        );
+                        registerUser.registerUser(
+                            widget.mobileNumber, context, _auth, otp);
+//                        Navigator.push(
+//                          context,
+//                          MaterialPageRoute(
+//                            builder: (context) => CompleteProfile(),
+//                          ),
+//                        );
+
                       }
                     },
                     backgroundColor: cIntroSliderBg,
@@ -155,12 +176,14 @@ class VerifyNumber extends StatelessWidget {
               InkWell(
                 onTap: () {
                   if (_formKey.currentState.validate()) {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => CompleteProfile(),
-                      ),
-                    );
+                    registerUser.registerUser(
+                        widget.mobileNumber, context, _auth, otp);
+//                    Navigator.push(
+//                      context,
+//                      MaterialPageRoute(
+//                        builder: (context) => CompleteProfile(),
+//                      ),
+//                    );
                   }
                 },
                 child: Container(
