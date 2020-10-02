@@ -3,13 +3,13 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:payso/widgets/verified_screen_widget.dart';
 
-class PasscodeVerifiesScreen extends StatefulWidget {
+class PasscodeVerifiedScreen extends StatefulWidget {
   static const String id = 'passcode_verified_screen';
   @override
-  _PasscodeVerifiesScreenState createState() => _PasscodeVerifiesScreenState();
+  _PasscodeVerifiedScreenState createState() => _PasscodeVerifiedScreenState();
 }
 
-class _PasscodeVerifiesScreenState extends State<PasscodeVerifiesScreen> {
+class _PasscodeVerifiedScreenState extends State<PasscodeVerifiedScreen> {
   @override
   void initState() {
     super.initState();
