@@ -1,6 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:payso/constants.dart';
-import 'package:payso/screens/verify_number.dart';
+import 'package:payso/model/register_user.dart';
 
 class RegisterScreen extends StatefulWidget {
   static const String id = 'register_screen';
@@ -12,7 +13,8 @@ class RegisterScreen extends StatefulWidget {
 class _RegisterScreenState extends State<RegisterScreen> {
   String phoneNumber = '';
   final _formKey = GlobalKey<FormState>();
-
+  RegisterUser registerUser = RegisterUser();
+  FirebaseAuth _auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,14 +73,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   },
                   onFieldSubmitted: (value) {
                     if (_formKey.currentState.validate()) {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => VerifyNumber(
-                            mobileNumber: phoneNumber,
-                          ),
-                        ),
-                      );
+                      registerUser.registerUser(phoneNumber, context, _auth);
+//                      Navigator.push(
+//                        context,
+//                        MaterialPageRoute(
+//                          builder: (context) => VerifyNumber(
+//                            mobileNumber: phoneNumber,
+//                          ),
+//                        ),
+//                      );
+
                     }
                   },
                   maxLength: 10,
@@ -125,14 +129,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 onTap: () {
                   //TODO: Navigate to OTP
                   if (_formKey.currentState.validate()) {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => VerifyNumber(
-                          mobileNumber: phoneNumber,
-                        ),
-                      ),
-                    );
+                    registerUser.registerUser(phoneNumber, context, _auth);
+//                    Navigator.push(
+//                      context,
+//                      MaterialPageRoute(
+//                        builder: (context) => VerifyNumber(
+//                          mobileNumber: phoneNumber,
+//                        ),
+//                      ),
+//                    );
                   }
                 },
                 child: Container(
