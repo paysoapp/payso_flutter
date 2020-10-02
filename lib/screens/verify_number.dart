@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:payso/constants.dart';
-import 'package:payso/screens/complete_profile.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+
+import 'mobile_verified_screen.dart';
 
 class VerifyNumber extends StatelessWidget {
   final String mobileNumber;
@@ -75,7 +76,7 @@ class VerifyNumber extends StatelessWidget {
                       height: 10,
                     ),
                     Text(
-                      'Enter a 6 digit number sent to \n +91 ${mobileNumber}',
+                      'Enter a 6 digit number sent to \n +91 $mobileNumber',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontWeight: FontWeight.w500,
@@ -118,7 +119,7 @@ class VerifyNumber extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => CompleteProfile(),
+                            builder: (context) => MobileVerifiedScreen(),
                           ),
                         );
                       }
@@ -158,7 +159,7 @@ class VerifyNumber extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => CompleteProfile(),
+                        builder: (context) => MobileVerifiedScreen(),
                       ),
                     );
                   }
