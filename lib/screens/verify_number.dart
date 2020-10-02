@@ -1,19 +1,35 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:payso/constants.dart';
+import 'package:payso/model/register_user.dart';
+import 'package:payso/screens/complete_profile.dart';
+import 'package:payso/screens/mobile_verified_screen.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
-import 'mobile_verified_screen.dart';
-
-class VerifyNumber extends StatelessWidget {
+class VerifyNumber extends StatefulWidget {
   final String mobileNumber;
-  var otp;
+  final String verificationId;
   static const String id = 'verify_number';
-  final _formKey = GlobalKey<FormState>();
 
-  VerifyNumber({this.mobileNumber});
+  VerifyNumber({this.mobileNumber, this.verificationId});
+
+  @override
+  _VerifyNumberState createState() => _VerifyNumberState();
+}
+
+class _VerifyNumberState extends State<VerifyNumber> {
+  String otp = '';
+  final _formKey = GlobalKey<FormState>();
+  RegisterUser registerUser = RegisterUser();
+  FirebaseAuth _auth = FirebaseAuth.instance;
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
+    print(widget.verificationId);
     return Scaffold(
       backgroundColor: cIntroSliderBg,
       body: SingleChildScrollView(
@@ -76,7 +92,7 @@ class VerifyNumber extends StatelessWidget {
                       height: 10,
                     ),
                     Text(
-                      'Enter a 6 digit number sent to \n +91 $mobileNumber',
+                      'Enter a 6 digit number sent to \n +91 ${widget.mobileNumber}',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontWeight: FontWeight.w500,
@@ -92,7 +108,9 @@ class VerifyNumber extends StatelessWidget {
                 height: 20,
               ),
               FlatButton(
-                onPressed: null,
+                onPressed: () {
+                  print("Resend OTP");
+                },
                 child: Text(
                   'Re Send Code',
                   style: TextStyle(
@@ -108,47 +126,60 @@ class VerifyNumber extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 20, right: 20),
                 child: PinCodeTextField(
-                    validator: (value) {
-                      if (value.isEmpty || value.length != 6) {
-                        return 'Please Enter Valid OTP';
-                      }
-                      return null;
-                    },
-                    onSubmitted: (value) {
-                      if (_formKey.currentState.validate()) {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => MobileVerifiedScreen(),
-                          ),
-                        );
-                      }
-                    },
-                    backgroundColor: cIntroSliderBg,
-                    appContext: context,
-                    length: 6,
-                    obscureText: false,
-                    pinTheme: PinTheme(
-                      selectedFillColor: Colors.grey[300],
-                      inactiveColor: Colors.grey[300],
-                      activeColor: Colors.grey[300],
-                      activeFillColor: Colors.grey[300],
-                      inactiveFillColor: Colors.grey[300],
-                      shape: PinCodeFieldShape.box,
-                      borderRadius: BorderRadius.circular(5),
-                      fieldHeight: 50,
-                      fieldWidth: 40,
-                    ),
-                    autoDismissKeyboard: true,
-                    keyboardType: TextInputType.number,
-                    enableActiveFill: true,
-                    onCompleted: (value) {
-                      otp = value;
-                      print('otp is ' + otp);
-                    },
-                    onChanged: (value) {
-                      print("value" + value);
-                    }),
+                  validator: (value) {
+                    if (value.isEmpty || value.length != 6) {
+                      return 'Please Enter Valid OTP';
+                    }
+                    return null;
+                  },
+                  onSubmitted: (value) {
+                    if (_formKey.currentState.validate()) {
+                      var _credential = PhoneAuthProvider.credential(
+                          verificationId: widget.verificationId, smsCode: otp);
+                      _auth
+                          .signInWithCredential(_credential)
+                          .then((UserCredential result) => {
+                                Navigator.pushNamed(context, CompleteProfile.id)
+                              })
+                          .catchError((e) {
+                        print(e);
+                      });
+
+//                        Navigator.push(
+//                          context,
+//                          MaterialPageRoute(
+//                            builder: (context) => CompleteProfile(),
+//                          ),
+//                        );
+
+                    }
+                  },
+                  backgroundColor: cIntroSliderBg,
+                  appContext: context,
+                  length: 6,
+                  obscureText: false,
+                  pinTheme: PinTheme(
+                    selectedFillColor: Colors.grey[300],
+                    inactiveColor: Colors.grey[300],
+                    activeColor: Colors.grey[300],
+                    activeFillColor: Colors.grey[300],
+                    inactiveFillColor: Colors.grey[300],
+                    shape: PinCodeFieldShape.box,
+                    borderRadius: BorderRadius.circular(5),
+                    fieldHeight: 50,
+                    fieldWidth: 40,
+                  ),
+                  autoDismissKeyboard: true,
+                  keyboardType: TextInputType.number,
+                  enableActiveFill: true,
+                  onCompleted: (value) {
+                    otp = value;
+                    print('otp is ' + otp);
+                  },
+                  onChanged: (value) {
+                    print("value" + value);
+                  },
+                ),
               ),
               SizedBox(
                 height: 20,
@@ -156,12 +187,23 @@ class VerifyNumber extends StatelessWidget {
               InkWell(
                 onTap: () {
                   if (_formKey.currentState.validate()) {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => MobileVerifiedScreen(),
-                      ),
-                    );
+                    var _credential = PhoneAuthProvider.credential(
+                        verificationId: widget.verificationId, smsCode: otp);
+                    _auth
+                        .signInWithCredential(_credential)
+                        .then((UserCredential result) => {
+                              Navigator.pushNamed(
+                                  context, MobileVerifiedScreen.id)
+                            })
+                        .catchError((e) {
+                      print(e);
+                    });
+//                    Navigator.push(
+//                      context,
+//                      MaterialPageRoute(
+//                        builder: (context) => CompleteProfile(),
+//                      ),
+//                    );
                   }
                 },
                 child: Container(

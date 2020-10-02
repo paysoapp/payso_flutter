@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "751315225816",
+    "firebase_url": "https://paysoapp-5c7d7.firebaseio.com",
+    "project_id": "paysoapp-5c7d7",
+    "storage_bucket": "paysoapp-5c7d7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:751315225816:android:068470825fc2cba3531bad",
+        "android_client_info": {
+          "package_name": "com.world.professionals.payso"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "751315225816-cqjr411rgqms3d143qmfic9qrp3k63mt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDP2Gl_8tq8DNb_y7kdDpma5PU29O4Frn8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "751315225816-cqjr411rgqms3d143qmfic9qrp3k63mt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
