@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:payso/widgets/verified_screen_widget.dart';
 

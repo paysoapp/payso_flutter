@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:payso/screens/intro_slider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends StatefulWidget {
   static const String id = 'splash_screen';
@@ -13,6 +14,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
+    if (isUserOldSF()) {}
     Timer(
       Duration(seconds: 3),
       () {
@@ -22,6 +24,15 @@ class _SplashScreenState extends State<SplashScreen> {
         );
       },
     );
+  }
+
+  isUserOldSF() async {
+    SharedPreferences _prefs = await SharedPreferences.getInstance();
+    bool isUserOld = _prefs.getBool('isUserOld');
+    if (isUserOld) {
+      //TODO: Implement Shared Preferences
+    }
+    return isUserOld;
   }
 
   @override

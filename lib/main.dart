@@ -20,17 +20,11 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  bool _initialized = false;
-  bool _error = false;
-
   void initializeFlutterFire() async {
     try {
       await Firebase.initializeApp();
-      setState(() {
-        _initialized = true;
-      });
     } catch (e) {
-      _error = true;
+      print(e);
     }
   }
 
