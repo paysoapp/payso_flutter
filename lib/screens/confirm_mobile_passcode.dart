@@ -141,7 +141,7 @@ class ConfirmMobilePasscode extends StatelessWidget {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => PasscodeVerifiesScreen(),
+                        builder: (context) => PasscodeVerifiedScreen(),
                       ),
                     );
                   }
