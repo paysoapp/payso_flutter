@@ -81,7 +81,7 @@ class SetMobilePasscode extends StatelessWidget {
                       },
                       onSubmitted: (value) {
                         if (_formKey.currentState.validate()) {
-                          print("Valid");
+                          print("ENtered passcode is valid");
                         }
                       },
                       backgroundColor: cIntroSliderBg,
