@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:payso/constants.dart';
+import 'package:payso/screens/set_mobile_passcode.dart';
 import 'package:payso/widgets/profile_text_field.dart';
 
 class CompleteProfile extends StatefulWidget {
@@ -145,14 +146,12 @@ class _CompleteProfileState extends State<CompleteProfile> {
                   onTap: () {
                     //TODO: Navigate to Success Page
                     if (_formKey.currentState.validate()) {
-//                    Navigator.push(
-//                      context,
-//                      MaterialPageRoute(
-//                        builder: (context) => VerifyNumber(
-//                          mobileNumber: phoneNumber,
-//                        ),
-//                      ),
-//                    );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SetMobilePasscode(),
+                        ),
+                      );
                     }
                   },
                   child: Container(
