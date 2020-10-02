@@ -26,6 +26,7 @@ class _CompleteProfileState extends State<CompleteProfile> {
               horizontal: 30,
             ),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
@@ -35,16 +36,16 @@ class _CompleteProfileState extends State<CompleteProfile> {
                   'Complete Profile',
                   style: cHeadStyle,
                 ),
-                SizedBox(
-                  height: 20.0,
-                ),
+                // SizedBox(
+                //   height: 20.0,
+                // ),
                 Text(
                   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut viverra sollicitudin commodo.',
                   style: cTextStyle,
                 ),
-                SizedBox(
-                  height: 30.0,
-                ),
+                // SizedBox(
+                //   height: 30.0,
+                // ),
                 ProfileTextField(
                   textFieldImage: Image.asset(
                     'assets/icons/name.png',
@@ -76,9 +77,9 @@ class _CompleteProfileState extends State<CompleteProfile> {
                     }
                   },
                 ),
-                SizedBox(
-                  height: 20.0,
-                ),
+                // SizedBox(
+                //   height: 20.0,
+                // ),
                 ProfileTextField(
                   textFieldImage: Image.asset(
                     'assets/icons/email.png',
@@ -112,9 +113,9 @@ class _CompleteProfileState extends State<CompleteProfile> {
                     }
                   },
                 ),
-                SizedBox(
-                  height: 20.0,
-                ),
+                // SizedBox(
+                //   height: 20.0,
+                // ),
                 ProfileTextField(
                   textFieldImage: Image.asset(
                     'assets/icons/flag.png',

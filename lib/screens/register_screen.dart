@@ -22,6 +22,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         child: Form(
           key: _formKey,
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Container(
                 margin: EdgeInsets.only(
@@ -30,9 +31,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 width: MediaQuery.of(context).size.width,
                 child: Image.asset('./assets/images/register.png'),
               ),
-              SizedBox(
-                height: 40.0,
-              ),
+              // SizedBox(
+              //   height: 40.0,
+              // ),
               Container(
                 padding: EdgeInsets.symmetric(
                   horizontal: 15.0,
@@ -45,9 +46,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       'Registration',
                       style: cHeadStyle,
                     ),
-                    SizedBox(
-                      height: 10.0,
-                    ),
+                    // SizedBox(
+                    //   height: 10.0,
+                    // ),
                     Text(
                       'Enter your mobile number to receive verification code',
                       style: cTextStyle,
@@ -56,9 +57,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ],
                 ),
               ),
-              SizedBox(
-                height: 30.0,
-              ),
+              // SizedBox(
+              //   height: 30.0,
+              // ),
               Container(
                 width: MediaQuery.of(context).size.width / 1.1,
                 child: TextFormField(
@@ -109,22 +110,22 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             width: 30.0,
                             height: 30.0,
                           ),
-                          SizedBox(
-                            width: 10.0,
-                          ),
+                          // SizedBox(
+                          //   width: 10.0,
+                          // ),
                           Text('+(91)'),
-                          SizedBox(
-                            width: 14.0,
-                          ),
+                          // SizedBox(
+                          //   width: 14.0,
+                          // ),
                         ],
                       ),
                     ),
                   ),
                 ),
               ),
-              SizedBox(
-                height: 20.0,
-              ),
+              // SizedBox(
+              //   height: 20.0,
+              // ),
               InkWell(
                 onTap: () {
                   //TODO: Navigate to OTP

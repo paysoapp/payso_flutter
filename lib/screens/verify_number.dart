@@ -36,11 +36,12 @@ class _VerifyNumberState extends State<VerifyNumber> {
         child: Form(
           key: _formKey,
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(
-                height: 40.0,
-              ),
+              // SizedBox(
+              //   height: 30.0,
+              // ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -66,17 +67,17 @@ class _VerifyNumberState extends State<VerifyNumber> {
                   ),
                 ],
               ),
-              SizedBox(
-                height: 30,
-              ),
+              // SizedBox(
+              //   height: 30,
+              // ),
               Image.asset(
                 'assets/images/verify_number.png',
                 width: MediaQuery.of(context).size.width -
                     MediaQuery.of(context).size.width / 4,
               ),
-              SizedBox(
-                height: 40,
-              ),
+              // SizedBox(
+              //   height: 40,
+              // ),
               Container(
                 child: Column(
                   children: [
@@ -88,9 +89,9 @@ class _VerifyNumberState extends State<VerifyNumber> {
                         fontSize: 24,
                       ),
                     ),
-                    SizedBox(
-                      height: 10,
-                    ),
+                    // SizedBox(
+                    //   height: 10,
+                    // ),
                     Text(
                       'Enter a 6 digit number sent to \n +91 ${widget.mobileNumber}',
                       textAlign: TextAlign.center,
@@ -104,9 +105,9 @@ class _VerifyNumberState extends State<VerifyNumber> {
                   ],
                 ),
               ),
-              SizedBox(
-                height: 20,
-              ),
+              // SizedBox(
+              //   height: 20,
+              // ),
               FlatButton(
                 onPressed: () {
                   print("Resend OTP");
@@ -120,9 +121,9 @@ class _VerifyNumberState extends State<VerifyNumber> {
                   ),
                 ),
               ),
-              SizedBox(
-                height: 20,
-              ),
+              // SizedBox(
+              //   height: 20,
+              // ),
               Padding(
                 padding: const EdgeInsets.only(left: 20, right: 20),
                 child: PinCodeTextField(
@@ -181,9 +182,9 @@ class _VerifyNumberState extends State<VerifyNumber> {
                   },
                 ),
               ),
-              SizedBox(
-                height: 20,
-              ),
+              // SizedBox(
+              //   height: 20,
+              // ),
               InkWell(
                 onTap: () {
                   if (_formKey.currentState.validate()) {

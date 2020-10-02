@@ -39,6 +39,7 @@ class _IntroSliderState extends State<IntroSlider> {
     return Scaffold(
       backgroundColor: cIntroSliderBg,
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Container(
             height: MediaQuery.of(context).size.height - 180,
@@ -84,9 +85,9 @@ class _IntroSliderState extends State<IntroSlider> {
               ],
             ),
           ),
-          SizedBox(
-            height: 30,
-          ),
+          // SizedBox(
+          //   height: 30,
+          // ),
           InkWell(
             onTap: () {
               if (slideIndex != 3) {
@@ -119,9 +120,9 @@ class _IntroSliderState extends State<IntroSlider> {
               ),
             ),
           ),
-          SizedBox(
-            height: 20.0,
-          ),
+          // SizedBox(
+          //   height: 20.0,
+          // ),
           InkWell(
             onTap: () {
               Navigator.pushNamed(context, RegisterScreen.id);
