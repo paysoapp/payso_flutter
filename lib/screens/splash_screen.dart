@@ -2,8 +2,11 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:payso/model/shared_preference_operations.dart';
-import 'package:payso/screens/confirm_mobile_passcode.dart';
+
+import 'package:payso/screens/dashboard_screen.dart';
 import 'package:payso/screens/intro_slider.dart';
+import 'package:payso/screens/login_passcode_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends StatefulWidget {
   static const String id = 'splash_screen';
@@ -12,7 +15,7 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  SharedPreferenceOperations _pref = SharedPreferenceOperations();
+  SharedPreferenceOperations _prefs = SharedPreferenceOperations();
 
   @override
   void initState() {
@@ -20,13 +23,13 @@ class _SplashScreenState extends State<SplashScreen> {
 
     Timer(
       Duration(seconds: 3),
-      () {
-        if (_pref.isUserOldSF()) {
+      () async {
+        if (await _prefs.isUserOldSF() == true) {
           Navigator.pushReplacement(
             context,
-            MaterialPageRoute(builder: (context) => ConfirmMobilePasscode()),
+            MaterialPageRoute(builder: (context) => LoginPasscodeScreen()),
           );
-        } else {
+        } else if (await _prefs.isUserOldSF() == false) {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(builder: (context) => IntroSlider()),
