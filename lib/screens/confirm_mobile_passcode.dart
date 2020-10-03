@@ -21,7 +21,7 @@ class ConfirmMobilePasscode extends StatelessWidget {
       body: Form(
         key: _formKey,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Column(
               children: [
@@ -111,15 +111,17 @@ class ConfirmMobilePasscode extends StatelessWidget {
                       if (value.isEmpty || value.length != 4) {
                         return 'Please Enter Valid passcode';
                       } else if (currScreenPasscode != prevScreenPasscode) {
+                        print(
+                            'Curr: $currScreenPasscode Prev: $prevScreenPasscode');
                         return "Passcode doesn't match, Please Check!!";
                       }
                       return null;
                     },
-                    onSubmitted: (value) {
+                    onSubmitted: (value) async {
                       if (_formKey.currentState.validate()) {
                         SharedPreferenceOperations _pref =
                             SharedPreferenceOperations();
-                        _pref.setPasscode(currScreenPasscode);
+                        await _pref.setPasscode(currScreenPasscode);
                       }
                     },
                     backgroundColor: cIntroSliderBg,
@@ -150,11 +152,11 @@ class ConfirmMobilePasscode extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 60),
               child: InkWell(
-                onTap: () {
+                onTap: () async {
                   if (_formKey.currentState.validate()) {
                     SharedPreferenceOperations _pref =
                         SharedPreferenceOperations();
-                    _pref.setPasscode(currScreenPasscode);
+                    await _pref.setPasscode(currScreenPasscode);
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
