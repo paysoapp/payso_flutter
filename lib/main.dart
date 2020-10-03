@@ -1,8 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:payso/model/shared_preference_operations.dart';
 import 'package:payso/screens/complete_profile.dart';
 import 'package:payso/screens/confirm_mobile_passcode.dart';
 import 'package:payso/screens/intro_slider.dart';
+import 'package:payso/screens/login_passcode_screen.dart';
 import 'package:payso/screens/mobile_verified_screen.dart';
 import 'package:payso/screens/passcode_verified_screen.dart';
 import 'package:payso/screens/register_screen.dart';
@@ -49,6 +51,7 @@ class _MyAppState extends State<MyApp> {
         MobileVerifiedScreen.id: (context) => MobileVerifiedScreen(),
         SetMobilePasscode.id: (context) => SetMobilePasscode(),
         ConfirmMobilePasscode.id: (context) => ConfirmMobilePasscode(),
+        LoginPasscodeScreen.id: (context) => LoginPasscodeScreen(),
         PasscodeVerifiedScreen.id: (context) => PasscodeVerifiedScreen(),
       },
     );
