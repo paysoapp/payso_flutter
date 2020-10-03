@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:payso/constants.dart';
 import 'package:payso/model/register_user.dart';
-import 'package:payso/screens/complete_profile.dart';
 import 'package:payso/screens/mobile_verified_screen.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
@@ -140,19 +139,35 @@ class _VerifyNumberState extends State<VerifyNumber> {
                       _auth
                           .signInWithCredential(_credential)
                           .then((UserCredential result) => {
-                                Navigator.pushNamed(context, CompleteProfile.id)
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          MobileVerifiedScreen()),
+                                )
                               })
-                          .catchError((e) {
-                        print(e);
-                      });
-
-//                        Navigator.push(
-//                          context,
-//                          MaterialPageRoute(
-//                            builder: (context) => CompleteProfile(),
-//                          ),
-//                        );
-
+                          .catchError(
+                        (e) {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title: Text('Incorrect OTP'),
+                                content:
+                                    Text("The OTP you've entered is wrong"),
+                                actions: [
+                                  FlatButton(
+                                    child: Text("Ok"),
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                  )
+                                ],
+                              );
+                            },
+                          );
+                        },
+                      );
                     }
                   },
                   backgroundColor: cIntroSliderBg,
@@ -192,19 +207,36 @@ class _VerifyNumberState extends State<VerifyNumber> {
                         verificationId: widget.verificationId, smsCode: otp);
                     _auth
                         .signInWithCredential(_credential)
-                        .then((UserCredential result) => {
-                              Navigator.pushNamed(
-                                  context, MobileVerifiedScreen.id)
-                            })
-                        .catchError((e) {
-                      print(e);
-                    });
-//                    Navigator.push(
-//                      context,
-//                      MaterialPageRoute(
-//                        builder: (context) => CompleteProfile(),
-//                      ),
-//                    );
+                        .then(
+                          (UserCredential result) => {
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MobileVerifiedScreen()),
+                            )
+                          },
+                        )
+                        .catchError(
+                      (e) {
+                        showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title: Text('Incorrect OTP'),
+                                content:
+                                    Text("The OTP you've entered is wrong"),
+                                actions: [
+                                  FlatButton(
+                                    child: Text("Ok"),
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                  )
+                                ],
+                              );
+                            });
+                      },
+                    );
                   }
                 },
                 child: Container(

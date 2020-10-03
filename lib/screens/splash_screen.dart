@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:payso/model/shared_preference_operations.dart';
+import 'package:payso/screens/confirm_mobile_passcode.dart';
 import 'package:payso/screens/intro_slider.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -10,16 +12,26 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  SharedPreferenceOperations _pref = SharedPreferenceOperations();
+
   @override
   void initState() {
     super.initState();
+
     Timer(
       Duration(seconds: 3),
       () {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => IntroSlider()),
-        );
+        if (_pref.isUserOldSF()) {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => ConfirmMobilePasscode()),
+          );
+        } else {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => IntroSlider()),
+          );
+        }
       },
     );
   }

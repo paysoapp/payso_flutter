@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:payso/model/shared_preference_operations.dart';
+import 'package:payso/screens/dashboard_screen.dart';
 import 'package:payso/widgets/verified_screen_widget.dart';
 
 class PasscodeVerifiedScreen extends StatefulWidget {
@@ -10,19 +12,21 @@ class PasscodeVerifiedScreen extends StatefulWidget {
 }
 
 class _PasscodeVerifiedScreenState extends State<PasscodeVerifiedScreen> {
+  SharedPreferenceOperations _pref = SharedPreferenceOperations();
+
   @override
   void initState() {
     super.initState();
-    //TODO: set the route to next screen
-    // Timer(
-    // Duration(seconds: 2),
-    // () {
-    // Navigator.pushReplacement(
-    //   context,
-    //   MaterialPageRoute(builder: (context) => ),
-    // );
-    // },
-    // );
+    _pref.setOldUser();
+    Timer(
+      Duration(seconds: 2),
+      () {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => DashboardScreen()),
+        );
+      },
+    );
   }
 
   @override

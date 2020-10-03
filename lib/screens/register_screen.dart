@@ -128,17 +128,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
               // ),
               InkWell(
                 onTap: () {
-                  //TODO: Navigate to OTP
                   if (_formKey.currentState.validate()) {
                     registerUser.registerUser(phoneNumber, context, _auth);
-//                    Navigator.push(
-//                      context,
-//                      MaterialPageRoute(
-//                        builder: (context) => VerifyNumber(
-//                          mobileNumber: phoneNumber,
-//                        ),
-//                      ),
-//                    );
                   }
                 },
                 child: Container(
