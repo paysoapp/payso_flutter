@@ -14,7 +14,7 @@ class SetMobilePasscode extends StatelessWidget {
       body: Form(
         key: _formKey,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Column(
               children: [
@@ -82,6 +82,8 @@ class SetMobilePasscode extends StatelessWidget {
                       },
                       onSubmitted: (value) {
                         passcode = int.parse(value);
+                        print(passcode);
+
                         if (_formKey.currentState.validate()) {
                           Navigator.push(
                             context,
@@ -112,7 +114,7 @@ class SetMobilePasscode extends StatelessWidget {
                       keyboardType: TextInputType.number,
                       enableActiveFill: true,
                       onChanged: (value) {
-                        print("value" + value);
+                        passcode = int.parse(value);
                       }),
                 ),
               ],
