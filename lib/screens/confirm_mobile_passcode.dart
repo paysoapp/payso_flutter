@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:payso/constants.dart';
+import 'package:payso/model/shared_preference_operations.dart';
 import 'package:payso/screens/passcode_verified_screen.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 class ConfirmMobilePasscode extends StatelessWidget {
   static const String id = 'confirm_mobile_passcode';
+
+  final int prevScreenPasscode;
+
+  ConfirmMobilePasscode({this.prevScreenPasscode});
+
   final _formKey = GlobalKey<FormState>();
+  int currScreenPasscode = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -98,38 +106,44 @@ class ConfirmMobilePasscode extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 50),
                   child: PinCodeTextField(
-                      validator: (value) {
-                        if (value.isEmpty || value.length != 4) {
-                          return 'Please Enter Valid passcode';
-                        }
-                        return null;
-                      },
-                      onSubmitted: (value) {
-                        if (_formKey.currentState.validate()) {
-                          print("Valid");
-                        }
-                      },
-                      backgroundColor: cIntroSliderBg,
-                      appContext: context,
-                      length: 4,
-                      obscureText: false,
-                      pinTheme: PinTheme(
-                        selectedFillColor: Colors.grey[300],
-                        inactiveColor: Colors.grey[300],
-                        activeColor: Colors.grey[300],
-                        activeFillColor: Colors.grey[300],
-                        inactiveFillColor: Colors.grey[300],
-                        shape: PinCodeFieldShape.box,
-                        borderRadius: BorderRadius.circular(5),
-                        fieldHeight: 60,
-                        fieldWidth: 60,
-                      ),
-                      autoDismissKeyboard: true,
-                      keyboardType: TextInputType.number,
-                      enableActiveFill: true,
-                      onChanged: (value) {
-                        print("value" + value);
-                      }),
+                    validator: (value) {
+                      currScreenPasscode = int.parse(value);
+                      if (value.isEmpty || value.length != 4) {
+                        return 'Please Enter Valid passcode';
+                      } else if (currScreenPasscode != prevScreenPasscode) {
+                        return "Passcode doesn't match, Please Check!!";
+                      }
+                      return null;
+                    },
+                    onSubmitted: (value) {
+                      if (_formKey.currentState.validate()) {
+                        SharedPreferenceOperations _pref =
+                            SharedPreferenceOperations();
+                        _pref.setPasscode(currScreenPasscode);
+                      }
+                    },
+                    backgroundColor: cIntroSliderBg,
+                    appContext: context,
+                    length: 4,
+                    obscureText: false,
+                    pinTheme: PinTheme(
+                      selectedFillColor: Colors.grey[300],
+                      inactiveColor: Colors.grey[300],
+                      activeColor: Colors.grey[300],
+                      activeFillColor: Colors.grey[300],
+                      inactiveFillColor: Colors.grey[300],
+                      shape: PinCodeFieldShape.box,
+                      borderRadius: BorderRadius.circular(5),
+                      fieldHeight: 60,
+                      fieldWidth: 60,
+                    ),
+                    autoDismissKeyboard: true,
+                    keyboardType: TextInputType.number,
+                    enableActiveFill: true,
+                    onChanged: (value) {
+                      print("value" + value);
+                    },
+                  ),
                 ),
               ],
             ),
@@ -138,6 +152,9 @@ class ConfirmMobilePasscode extends StatelessWidget {
               child: InkWell(
                 onTap: () {
                   if (_formKey.currentState.validate()) {
+                    SharedPreferenceOperations _pref =
+                        SharedPreferenceOperations();
+                    _pref.setPasscode(currScreenPasscode);
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(

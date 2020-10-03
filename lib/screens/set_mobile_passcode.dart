@@ -5,6 +5,7 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 
 class SetMobilePasscode extends StatelessWidget {
   static const String id = 'set_mobile_passcode';
+  int passcode = 0;
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -80,8 +81,16 @@ class SetMobilePasscode extends StatelessWidget {
                         return null;
                       },
                       onSubmitted: (value) {
+                        passcode = int.parse(value);
                         if (_formKey.currentState.validate()) {
-                          print("ENtered passcode is valid");
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ConfirmMobilePasscode(
+                                prevScreenPasscode: passcode,
+                              ),
+                            ),
+                          );
                         }
                       },
                       backgroundColor: cIntroSliderBg,
@@ -113,7 +122,14 @@ class SetMobilePasscode extends StatelessWidget {
               child: InkWell(
                 onTap: () {
                   if (_formKey.currentState.validate()) {
-                    Navigator.pushNamed(context, ConfirmMobilePasscode.id);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ConfirmMobilePasscode(
+                          prevScreenPasscode: passcode,
+                        ),
+                      ),
+                    );
                   }
                 },
                 child: Container(
