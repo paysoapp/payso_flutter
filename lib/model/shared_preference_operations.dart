@@ -2,27 +2,24 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPreferenceOperations {
   SharedPreferences _prefs;
-  init() async {
-    _prefs = await SharedPreferences.getInstance();
-  }
 
-  isUserOldSF() async {
-    init();
-    bool isUserOld = _prefs.getBool('isUserOld') ?? false;
-    if (isUserOld) {
-      return true;
-    } else {
-      return false;
-    }
+  Future<bool> isUserOldSF() async {
+    SharedPreferences _prefs = await SharedPreferences.getInstance();
+    return _prefs.getBool('isUserOld') ?? false;
   }
 
   setOldUser() async {
-    init();
-    _prefs.setBool('isUserOld', true);
+    SharedPreferences _prefs = await SharedPreferences.getInstance();
+    await _prefs.setBool('isUserOld', true);
   }
 
   setPasscode(int passcode) async {
-    init();
-    _prefs.setInt('passcode', passcode);
+    SharedPreferences _prefs = await SharedPreferences.getInstance();
+    await _prefs.setInt('passcode', passcode);
+  }
+
+  Future<int> getPasscode() async {
+    SharedPreferences _prefs = await SharedPreferences.getInstance();
+    return await _prefs.getInt('passcode');
   }
 }
