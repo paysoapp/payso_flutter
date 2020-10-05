@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:payso/constants.dart';
 import 'package:payso/model/register_user.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:payso/widgets/change_lang_btn_widget.dart';
 
 class RegisterScreen extends StatefulWidget {
   static const String id = 'register_screen';
@@ -16,7 +17,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final _formKey = GlobalKey<FormState>();
   RegisterUser registerUser = RegisterUser();
   FirebaseAuth _auth = FirebaseAuth.instance;
-  String phoneEmpty=tr('phoneEmpty');
+  String phoneEmpty = tr('phoneEmpty');
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,8 +28,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Container(
-                margin: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height / 7),
+                  padding: EdgeInsets.symmetric(vertical: 40),
+                  child: ChangeLangButton()),
+              Container(
                 height: MediaQuery.of(context).size.height / 3,
                 width: MediaQuery.of(context).size.width,
                 child: Image.asset('./assets/images/register.png'),
@@ -128,29 +130,32 @@ class _RegisterScreenState extends State<RegisterScreen> {
               // SizedBox(
               //   height: 20.0,
               // ),
-              InkWell(
-                onTap: () {
-                  if (_formKey.currentState.validate()) {
-                    registerUser.registerUser(phoneNumber, context, _auth);
-                  }
-                },
-                child: Container(
-                  height: 60,
-                  width: MediaQuery.of(context).size.width / 1.1,
-                  decoration: BoxDecoration(
-                    color: cPrimaryColor,
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(14),
+              Container(
+                padding: EdgeInsets.symmetric(vertical: 40),
+                child: InkWell(
+                  onTap: () {
+                    if (_formKey.currentState.validate()) {
+                      registerUser.registerUser(phoneNumber, context, _auth);
+                    }
+                  },
+                  child: Container(
+                    height: 60,
+                    width: MediaQuery.of(context).size.width / 1.1,
+                    decoration: BoxDecoration(
+                      color: cPrimaryColor,
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(14),
+                      ),
                     ),
+                    alignment: Alignment.center,
+                    child: Text(
+                      "otpButton",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ).tr(),
                   ),
-                  alignment: Alignment.center,
-                  child: Text(
-                    "otpButton",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ).tr(),
                 ),
               ),
             ],
