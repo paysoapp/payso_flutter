@@ -21,6 +21,21 @@ class SharedPreferenceOperations {
     return await _prefs.getInt('passcode');
   }
 
+  setLanguage(language) async {
+    SharedPreferences _prefs = await SharedPreferences.getInstance();
+    await _prefs.setString('language', language);
+  }
+
+  Future<bool> getSeen(screen) async {
+    SharedPreferences _prefs = await SharedPreferences.getInstance();
+    return await _prefs.getBool(screen) ?? false;
+  }
+
+  hasSeen(screen) async {
+    SharedPreferences _prefs = await SharedPreferences.getInstance();
+    await _prefs.setBool(screen, true);
+  }
+
   logout() async {
     SharedPreferences _prefs = await SharedPreferences.getInstance();
     await _prefs.clear();

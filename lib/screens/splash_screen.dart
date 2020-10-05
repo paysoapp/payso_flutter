@@ -2,12 +2,12 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:payso/model/shared_preference_operations.dart';
-
-import 'package:payso/screens/dashboard_screen.dart';
-import 'package:payso/screens/intro_slider.dart';
 import 'package:payso/screens/login_passcode_screen.dart';
+import 'package:payso/screens/permission_screen.dart';
 import 'package:payso/screens/select_language.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+
+import 'intro_slider.dart';
+import 'register_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   static const String id = 'splash_screen';
@@ -30,10 +30,26 @@ class _SplashScreenState extends State<SplashScreen> {
             context,
             MaterialPageRoute(builder: (context) => LoginPasscodeScreen()),
           );
-        } else if (await _prefs.isUserOldSF() == false) {
+        } else if (await _prefs.getSeen('Language') == false) {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(builder: (context) => SelectLanguage()),
+          );
+        } else if (await _prefs.getSeen('Permissions') == false) {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => PermissionScreen()),
+          );
+        } else if (await _prefs.getSeen('Intro') == false) {
+          print("Language ${await _prefs.getSeen('Intro')}");
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => IntroSlider()),
+          );
+        } else {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => RegisterScreen()),
           );
         }
       },

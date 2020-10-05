@@ -1,9 +1,12 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:payso/constants.dart';
 import 'package:payso/model/intro_slider_model.dart';
 import 'package:payso/screens/register_screen.dart';
 import 'package:payso/widgets/slide_tile.dart';
-import 'package:easy_localization/easy_localization.dart';
+
+import '../model/shared_preference_operations.dart';
+import 'register_screen.dart';
 
 class IntroSlider extends StatefulWidget {
   static const String id = 'intro_slider';
@@ -15,6 +18,7 @@ class _IntroSliderState extends State<IntroSlider> {
   List<SliderModel> mySLides = new List<SliderModel>();
   int slideIndex = 0;
   PageController controller;
+  SharedPreferenceOperations _prefs = SharedPreferenceOperations();
 
   Widget _buildPageIndicator(bool isCurrentPage) {
     return Container(
@@ -31,8 +35,19 @@ class _IntroSliderState extends State<IntroSlider> {
   @override
   void initState() {
     super.initState();
+    changeLocation();
     mySLides = getSlides();
     controller = new PageController();
+  }
+
+  changeLocation() async {
+    SharedPreferenceOperations _prefs = SharedPreferenceOperations();
+    if (await _prefs.getSeen('Intro') == true) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => RegisterScreen()),
+      );
+    }
   }
 
   @override
@@ -90,7 +105,7 @@ class _IntroSliderState extends State<IntroSlider> {
           //   height: 30,
           // ),
           InkWell(
-            onTap: () {
+            onTap: () async {
               if (slideIndex != 3) {
                 print("Get Started Now");
                 controller.animateToPage(
@@ -99,7 +114,11 @@ class _IntroSliderState extends State<IntroSlider> {
                   curve: Curves.linear,
                 );
               } else {
-                Navigator.pushNamed(context, RegisterScreen.id);
+                await _prefs.hasSeen('Intro');
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => RegisterScreen()),
+                );
               }
             },
             child: Container(
@@ -125,8 +144,12 @@ class _IntroSliderState extends State<IntroSlider> {
           //   height: 20.0,
           // ),
           InkWell(
-            onTap: () {
-              Navigator.pushNamed(context, RegisterScreen.id);
+            onTap: () async {
+              await _prefs.hasSeen('Intro');
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => RegisterScreen()),
+              );
             },
             child: Text(
               "skipLogin",

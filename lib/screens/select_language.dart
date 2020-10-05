@@ -1,8 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:payso/model/language.dart';
 import 'package:payso/constants.dart';
+import 'package:payso/model/language.dart';
+
+import '../model/shared_preference_operations.dart';
 import 'intro_slider.dart';
 
 class SelectLanguage extends StatefulWidget {
@@ -88,7 +90,11 @@ class _SelectLanguageState extends State<SelectLanguage> {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 20),
                 child: InkWell(
-                  onTap: () {
+                  onTap: () async {
+                    SharedPreferenceOperations _prefs =
+                        SharedPreferenceOperations();
+                    await _prefs.setLanguage(selectedLang);
+                    await _prefs.hasSeen('Language');
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(builder: (context) => IntroSlider()),
