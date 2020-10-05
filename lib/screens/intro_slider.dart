@@ -3,6 +3,7 @@ import 'package:payso/constants.dart';
 import 'package:payso/model/intro_slider_model.dart';
 import 'package:payso/screens/register_screen.dart';
 import 'package:payso/widgets/slide_tile.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class IntroSlider extends StatefulWidget {
   static const String id = 'intro_slider';
@@ -117,7 +118,7 @@ class _IntroSliderState extends State<IntroSlider> {
                   color: Colors.white,
                   fontWeight: FontWeight.w600,
                 ),
-              ),
+              ).tr(),
             ),
           ),
           // SizedBox(
@@ -128,13 +129,13 @@ class _IntroSliderState extends State<IntroSlider> {
               Navigator.pushNamed(context, RegisterScreen.id);
             },
             child: Text(
-              'Skip to Login',
+              "skipLogin",
               style: TextStyle(
                 color: cPrimaryColor,
                 fontSize: 16.0,
                 fontWeight: FontWeight.w400,
               ),
-            ),
+            ).tr(),
           ),
         ],
       ),

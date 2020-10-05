@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:payso/constants.dart';
 import 'package:payso/model/register_user.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class RegisterScreen extends StatefulWidget {
   static const String id = 'register_screen';
@@ -15,6 +16,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final _formKey = GlobalKey<FormState>();
   RegisterUser registerUser = RegisterUser();
   FirebaseAuth _auth = FirebaseAuth.instance;
+  String phoneEmpty=tr('phoneEmpty');
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,17 +45,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 child: Column(
                   children: [
                     Text(
-                      'Registration',
+                      "registrationTitle",
                       style: cHeadStyle,
-                    ),
+                    ).tr(),
                     // SizedBox(
                     //   height: 10.0,
                     // ),
                     Text(
-                      'Enter your mobile number to receive verification code',
+                      'registrationBody',
                       style: cTextStyle,
                       textAlign: TextAlign.center,
-                    )
+                    ).tr()
                   ],
                 ),
               ),
@@ -68,7 +70,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   },
                   validator: (value) {
                     if (value.isEmpty || value.length != 10) {
-                      return 'Please Enter Valid phone Number';
+                      return phoneEmpty;
                     }
                     return null;
                   },
@@ -90,7 +92,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   style: cFormFieldStyle,
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
-                    hintText: 'Enter Phone Number',
+                    hintText: 'phoneHint'.tr(),
                     border: OutlineInputBorder(
                       borderSide: BorderSide(
                         color: Colors.grey,
@@ -143,12 +145,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                   alignment: Alignment.center,
                   child: Text(
-                    "GET OTP",
+                    "otpButton",
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w600,
                     ),
-                  ),
+                  ).tr(),
                 ),
               ),
             ],

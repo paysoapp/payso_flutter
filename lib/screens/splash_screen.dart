@@ -6,6 +6,7 @@ import 'package:payso/model/shared_preference_operations.dart';
 import 'package:payso/screens/dashboard_screen.dart';
 import 'package:payso/screens/intro_slider.dart';
 import 'package:payso/screens/login_passcode_screen.dart';
+import 'package:payso/screens/select_language.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -32,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen> {
         } else if (await _prefs.isUserOldSF() == false) {
           Navigator.pushReplacement(
             context,
-            MaterialPageRoute(builder: (context) => IntroSlider()),
+            MaterialPageRoute(builder: (context) => SelectLanguage()),
           );
         }
       },

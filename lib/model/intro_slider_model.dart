@@ -46,9 +46,9 @@ List<SliderModel> getSlides() {
   //1
   sliderModel.setDesc(
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut viverra sollicitudin commodo. ");
-  sliderModel.setTitle("QR and Instant Payments");
+  sliderModel.setTitle("sliderTitle1");
   sliderModel.setImageAssetPath("assets/images/slider1.png");
-  sliderModel.setButtonTitle('Get Started');
+  sliderModel.setButtonTitle('sliderButton1');
   slides.add(sliderModel);
 
   sliderModel = new SliderModel();
@@ -56,9 +56,9 @@ List<SliderModel> getSlides() {
   //2
   sliderModel.setDesc(
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut viverra sollicitudin commodo. ");
-  sliderModel.setTitle("Bill Payments");
+  sliderModel.setTitle("sliderTitle2");
   sliderModel.setImageAssetPath("assets/images/slider2.png");
-  sliderModel.setButtonTitle('Start Paying Bills');
+  sliderModel.setButtonTitle('sliderButton2');
   slides.add(sliderModel);
 
   sliderModel = new SliderModel();
@@ -66,9 +66,9 @@ List<SliderModel> getSlides() {
   //3
   sliderModel.setDesc(
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut viverra sollicitudin commodo. ");
-  sliderModel.setTitle("Security");
+  sliderModel.setTitle("sliderTitle3");
   sliderModel.setImageAssetPath("assets/images/slider3.png");
-  sliderModel.setButtonTitle('Cool!');
+  sliderModel.setButtonTitle('sliderButton3');
   slides.add(sliderModel);
 
   sliderModel = new SliderModel();
@@ -76,9 +76,9 @@ List<SliderModel> getSlides() {
   //4
   sliderModel.setDesc(
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut viverra sollicitudin commodo. ");
-  sliderModel.setTitle("Withdraw Funds");
+  sliderModel.setTitle("sliderTitle4");
   sliderModel.setImageAssetPath("assets/images/slider4.png");
-  sliderModel.setButtonTitle("Let's begin");
+  sliderModel.setButtonTitle("sliderButton4");
   slides.add(sliderModel);
 
   sliderModel = new SliderModel();

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:payso/constants.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class SlideTile extends StatelessWidget {
   final String imagePath, title, desc;
@@ -19,7 +20,7 @@ class SlideTile extends StatelessWidget {
             height: 40,
           ),
           Text(
-            title,
+            title.tr(),
             textAlign: TextAlign.center,
             style: cHeadStyle,
           ),

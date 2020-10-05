@@ -4,7 +4,7 @@ import 'package:payso/constants.dart';
 import 'package:payso/model/register_user.dart';
 import 'package:payso/screens/mobile_verified_screen.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-
+import 'package:easy_localization/easy_localization.dart';
 class VerifyNumber extends StatefulWidget {
   final String mobileNumber;
   final String verificationId;
@@ -81,13 +81,13 @@ class _VerifyNumberState extends State<VerifyNumber> {
                 child: Column(
                   children: [
                     Text(
-                      'Verify your number',
+                      'verifyNumberTitle',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         fontSize: 24,
                       ),
-                    ),
+                    ).tr(),
                     // SizedBox(
                     //   height: 10,
                     // ),
