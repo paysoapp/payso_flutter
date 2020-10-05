@@ -1,0 +1,23 @@
+{
+  "sliderTitle1": "QR at Mga Instant na Pagbabayad",
+  "sliderTitle2": "Mga Bayad sa Bill",
+  "sliderTitle3":  "Seguridad",
+  "sliderTitle4":  "Mag-withdraw ng Mga Pondo",
+
+
+  "sliderButton1": "Magsimula",
+  "sliderButton2": "Simulan ang Pagbabayad ng Mga Pagsingil",
+  "sliderButton3": "Malamig!",
+  "sliderButton4": "Magisumla na tayo",
+
+  "skipLogin": "laktawan upang mag-login",
+
+  "registrationTitle": "Pagpaparehistro",
+  "registrationBody": "Ipasok ang iyong mobile number upang makatanggap ng verification code",
+  "phoneHint": "Ilagay ang Numero ng telepono",
+  "otpButton": "Kumuha ng OTP",
+  "phoneEmpty": "Mangyaring Ipasok ang wastong numero ng telepono",
+  "verifyNumberTitle": "Patunayan ang iyong numero"
+
+
+}

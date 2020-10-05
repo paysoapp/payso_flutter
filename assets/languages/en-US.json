@@ -1,0 +1,23 @@
+{
+  "sliderTitle1": "QR and Instant Payments",
+  "sliderTitle2": "Bill Payments",
+  "sliderTitle3":  "Security",
+  "sliderTitle4":  "Withdraw Funds",
+
+
+  "sliderButton1": "Get Started",
+  "sliderButton2": "Start Paying Bills",
+  "sliderButton3": "Cool!",
+  "sliderButton4": "Let's begin",
+
+  "skipLogin": "skip to login",
+
+  "registrationTitle": "Registration",
+  "registrationBody": "Enter your mobile number to receive verification code",
+  "phoneHint": "Enter Phone Number",
+  "phoneEmpty": "Please Enter Valid phone Number",
+  "otpButton": "Get OTP",
+  "verifyNumberTitle": "Verify your number"
+
+
+}
