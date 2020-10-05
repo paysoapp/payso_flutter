@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:payso/constants.dart';
 import 'package:payso/screens/confirm_mobile_passcode.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import 'package:easy_localization/easy_localization.dart';
 
 class SetMobilePasscode extends StatelessWidget {
   static const String id = 'set_mobile_passcode';
@@ -32,18 +31,18 @@ class SetMobilePasscode extends StatelessWidget {
                   child: Column(
                     children: [
                       Text(
-                        'setPasscodeTitle',
+                        'Set Mobile Passcode',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
                           fontSize: 24,
                         ),
-                      ).tr(),
+                      ),
                       SizedBox(
                         height: 10,
                       ),
                       Text(
-                        'setPasscodeBody',
+                        'Enter a 4 digit passcode to secure your account',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontWeight: FontWeight.w500,
@@ -51,7 +50,7 @@ class SetMobilePasscode extends StatelessWidget {
                           color: Colors.grey,
                           letterSpacing: 1.0,
                         ),
-                      ).tr()
+                      )
                     ],
                   ),
                 ),
@@ -61,13 +60,13 @@ class SetMobilePasscode extends StatelessWidget {
                 FlatButton(
                   onPressed: null,
                   child: Text(
-                    'PasscodeDigitsOnly',
+                    'Enter Digits Only',
                     style: TextStyle(
                       color: Colors.grey,
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
                     ),
-                  ).tr(),
+                  ),
                 ),
                 SizedBox(
                   height: 20,
@@ -77,7 +76,7 @@ class SetMobilePasscode extends StatelessWidget {
                   child: PinCodeTextField(
                       validator: (value) {
                         if (value.isEmpty || value.length != 4) {
-                          return 'incorrectSetPasscode'.tr();
+                          return 'Please Enter Valid passcode';
                         }
                         return null;
                       },
@@ -146,7 +145,7 @@ class SetMobilePasscode extends StatelessWidget {
                   width: MediaQuery.of(context).size.width - 80,
                   alignment: Alignment.center,
                   child: Text(
-                    "setPasscodeButton".tr(),
+                    "Confirm Passcode",
                     style: TextStyle(
                         color: Colors.white, fontWeight: FontWeight.w600),
                   ),

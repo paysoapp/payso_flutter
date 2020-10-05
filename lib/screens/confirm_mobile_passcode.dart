@@ -3,7 +3,6 @@ import 'package:payso/constants.dart';
 import 'package:payso/model/shared_preference_operations.dart';
 import 'package:payso/screens/passcode_verified_screen.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import 'package:easy_localization/easy_localization.dart';
 
 class ConfirmMobilePasscode extends StatelessWidget {
   static const String id = 'confirm_mobile_passcode';
@@ -43,12 +42,12 @@ class ConfirmMobilePasscode extends StatelessWidget {
                             color: cPrimaryColor,
                           ),
                           Text(
-                            'backButton',
+                            'Back',
                             style: TextStyle(
                               color: cPrimaryColor,
                               fontWeight: FontWeight.w700,
                             ),
-                          ).tr(),
+                          ),
                         ],
                       ),
                     ),
@@ -64,18 +63,18 @@ class ConfirmMobilePasscode extends StatelessWidget {
                   child: Column(
                     children: [
                       Text(
-                        'confirmPasscodeTitle',
+                        'Confirm Mobile Passcode',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
                           fontSize: 24,
                         ),
-                      ).tr(),
+                      ),
                       SizedBox(
                         height: 10,
                       ),
                       Text(
-                        'confirmPasscodeBody',
+                        'Please Re Enter your 4 digit passcode',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontWeight: FontWeight.w500,
@@ -83,7 +82,7 @@ class ConfirmMobilePasscode extends StatelessWidget {
                           color: Colors.grey,
                           letterSpacing: 1.0,
                         ),
-                      ).tr()
+                      )
                     ],
                   ),
                 ),
@@ -93,13 +92,13 @@ class ConfirmMobilePasscode extends StatelessWidget {
                 FlatButton(
                   onPressed: null,
                   child: Text(
-                    'PasscodeDigitsOnly',
+                    'Enter Digits Only',
                     style: TextStyle(
                       color: Colors.grey,
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
                     ),
-                  ).tr(),
+                  ),
                 ),
                 SizedBox(
                   height: 20,
@@ -110,11 +109,11 @@ class ConfirmMobilePasscode extends StatelessWidget {
                     validator: (value) {
                       currScreenPasscode = int.parse(value);
                       if (value.isEmpty || value.length != 4) {
-                        return 'incorrectSetPasscode'.tr();
+                        return 'Please Enter Valid passcode';
                       } else if (currScreenPasscode != prevScreenPasscode) {
                         print(
                             'Curr: $currScreenPasscode Prev: $prevScreenPasscode');
-                        return "incorrectConfirmPasscode".tr();
+                        return "Passcode doesn't match, Please Check!!";
                       }
                       return null;
                     },
@@ -177,10 +176,10 @@ class ConfirmMobilePasscode extends StatelessWidget {
                   width: MediaQuery.of(context).size.width - 80,
                   alignment: Alignment.center,
                   child: Text(
-                    "confirmPasscodeButton",
+                    "Set Passcode",
                     style: TextStyle(
                         color: Colors.white, fontWeight: FontWeight.w600),
-                  ).tr(),
+                  ),
                 ),
               ),
             ),
