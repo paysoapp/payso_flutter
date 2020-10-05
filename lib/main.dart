@@ -9,6 +9,7 @@ import 'package:payso/screens/mobile_verified_screen.dart';
 import 'package:payso/screens/passcode_verified_screen.dart';
 import 'package:payso/screens/permission_screen.dart';
 import 'package:payso/screens/register_screen.dart';
+import 'package:payso/screens/secure_screen.dart';
 import 'package:payso/screens/select_language.dart';
 import 'package:payso/screens/set_mobile_passcode.dart';
 import 'package:payso/screens/splash_screen.dart';
@@ -65,6 +66,7 @@ class _MyAppState extends State<MyApp> {
         LoginPasscodeScreen.id: (context) => LoginPasscodeScreen(),
         PasscodeVerifiedScreen.id: (context) => PasscodeVerifiedScreen(),
         PermissionScreen.id: (context) => PermissionScreen(),
+        SecureScreen.id: (context) => SecureScreen(),
       },
     );
   }
