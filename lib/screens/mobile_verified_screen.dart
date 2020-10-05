@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:payso/screens/complete_profile.dart';
 import 'package:payso/widgets/verified_screen_widget.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class MobileVerifiedScreen extends StatefulWidget {
   static const String id = 'verified_screen';
@@ -29,7 +30,7 @@ class _MobileVerifiedScreenState extends State<MobileVerifiedScreen> {
   Widget build(BuildContext context) {
     return Container(
       child: VerifiedScreenWidget(
-        desc: 'Your mobile number has been verified successfully',
+        desc: 'mobileVerifiedDesc'.tr(),
       ),
     );
   }

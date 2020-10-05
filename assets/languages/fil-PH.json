@@ -17,7 +17,38 @@
   "phoneHint": "Ilagay ang Numero ng telepono",
   "otpButton": "Kumuha ng OTP",
   "phoneEmpty": "Mangyaring Ipasok ang wastong numero ng telepono",
-  "verifyNumberTitle": "Patunayan ang iyong numero"
 
 
-}
+  "verifyNumberTitle": "Patunayan ang iyong numero",
+  "verifyNumberBody": "Magpasok ng isang numero ng 6 na digit na ipinadala sa",
+  "verifyResendCode": "Ipadala muli ang Code",
+  "otpInvalid": "Mangyaring Ipasok ang Valid OTP",
+  "backButton": "Bumalik",
+  "incorrectTitle": "Maling OTP",
+  "incorrectOTPContent": "Ang OTP na iyong ipinasok ay mali",
+  "incorrectButton": "Sige",
+  "otpVerifyButton": "Patunayan",
+
+  "mobileVerifiedDesc": "Ang iyong numero ng mobile ay matagumpay na na-verify",
+
+  "completeProfileTitle": "Kumpletuhin ang Profile",
+  "completeProfileName": "Ipasok ang Iyong Pangalan",
+  "incorretProfileName": "Dapat may bisa ang haba ng pangalan",
+  "completeProfileEmail": "Ipasok ang Iyong Email",
+  "incorrectProfileEmail": "Magpasok ng wastong email",
+  "completeProfileReferral": "Sanggunian Code",
+  "completeProfileNext": "Susunod",
+
+  "setPasscodeTitle": "Itakda ang Mobile Passcode",
+  "setPasscodeBody": "Magpasok ng isang 4 digit na passcode upang ma-secure ang iyong account",
+  "PasscodeDigitsOnly": "Ipasok ang Mga Digit Lamang",
+  "incorrectSetPasscode": "Mangyaring Ipasok ang wastong passcode",
+  "setPasscodeButton": "Kumpirmahin ang Passcode",
+
+  "confirmPasscodeTitle": "Kumpirmahin ang Mobile Passcode",
+  "confirmPasscodeBody": "Mangyaring Ipasok muli ang iyong 4 na digit na passcode",
+  "incorrectConfirmPasscode": "Hindi tumutugma ang Passcode, Mangyaring Suriin !!",
+  "confirmPasscodeButton": "Itakda ang Passcode",
+
+  "passcodeVerifedDesc": "Ang iyong passcode ay matagumpay na naitakda"
+  }

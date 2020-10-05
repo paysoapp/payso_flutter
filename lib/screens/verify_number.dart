@@ -10,6 +10,7 @@ class VerifyNumber extends StatefulWidget {
   final String verificationId;
   static const String id = 'verify_number';
 
+
   VerifyNumber({this.mobileNumber, this.verificationId});
 
   @override
@@ -18,6 +19,7 @@ class VerifyNumber extends StatefulWidget {
 
 class _VerifyNumberState extends State<VerifyNumber> {
   String otp = '';
+  final String otpInvalid=tr("otpInvalid");
   final _formKey = GlobalKey<FormState>();
   RegisterUser registerUser = RegisterUser();
   FirebaseAuth _auth = FirebaseAuth.instance;
@@ -55,12 +57,12 @@ class _VerifyNumberState extends State<VerifyNumber> {
                           color: cPrimaryColor,
                         ),
                         Text(
-                          'Back',
+                          'backButton',
                           style: TextStyle(
                             color: cPrimaryColor,
                             fontWeight: FontWeight.w700,
                           ),
-                        ),
+                        ).tr(),
                       ],
                     ),
                   ),
@@ -92,7 +94,7 @@ class _VerifyNumberState extends State<VerifyNumber> {
                     //   height: 10,
                     // ),
                     Text(
-                      'Enter a 6 digit number sent to \n +91 ${widget.mobileNumber}',
+                      'verifyNumberBody'.tr()+' \n${widget.mobileNumber}',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontWeight: FontWeight.w500,
@@ -112,13 +114,13 @@ class _VerifyNumberState extends State<VerifyNumber> {
                   print("Resend OTP");
                 },
                 child: Text(
-                  'Re Send Code',
+                  'verifyResendCode',
                   style: TextStyle(
                     color: cPrimaryColor,
                     fontSize: 16,
                     fontWeight: FontWeight.w700,
                   ),
-                ),
+                ).tr(),
               ),
               // SizedBox(
               //   height: 20,
@@ -128,7 +130,7 @@ class _VerifyNumberState extends State<VerifyNumber> {
                 child: PinCodeTextField(
                   validator: (value) {
                     if (value.isEmpty || value.length != 6) {
-                      return 'Please Enter Valid OTP';
+                      return otpInvalid;
                     }
                     return null;
                   },
@@ -152,12 +154,12 @@ class _VerifyNumberState extends State<VerifyNumber> {
                             context: context,
                             builder: (BuildContext context) {
                               return AlertDialog(
-                                title: Text('Incorrect OTP'),
+                                title: Text('incorrectTitle').tr(),
                                 content:
-                                    Text("The OTP you've entered is wrong"),
+                                    Text("incorrectOTPContent").tr(),
                                 actions: [
                                   FlatButton(
-                                    child: Text("Ok"),
+                                    child: Text("incorrectButton").tr(),
                                     onPressed: () {
                                       Navigator.of(context).pop();
                                     },
@@ -222,12 +224,12 @@ class _VerifyNumberState extends State<VerifyNumber> {
                             context: context,
                             builder: (BuildContext context) {
                               return AlertDialog(
-                                title: Text('Incorrect OTP'),
+                                title: Text('incorrectTitle').tr(),
                                 content:
-                                    Text("The OTP you've entered is wrong"),
+                                    Text("incorrectOTPContent").tr(),
                                 actions: [
                                   FlatButton(
-                                    child: Text("Ok"),
+                                    child: Text("incorrectButton").tr(),
                                     onPressed: () {
                                       Navigator.of(context).pop();
                                     },
@@ -250,10 +252,10 @@ class _VerifyNumberState extends State<VerifyNumber> {
                   width: MediaQuery.of(context).size.width - 80,
                   alignment: Alignment.center,
                   child: Text(
-                    "Verify",
+                    "otpVerifyButton",
                     style: TextStyle(
                         color: Colors.white, fontWeight: FontWeight.w600),
-                  ),
+                  ).tr(),
                 ),
               ),
             ],

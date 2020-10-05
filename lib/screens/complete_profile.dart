@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:payso/constants.dart';
 import 'package:payso/screens/set_mobile_passcode.dart';
 import 'package:payso/widgets/profile_text_field.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class CompleteProfile extends StatefulWidget {
   static const String id = 'complete_profile';
@@ -33,9 +34,9 @@ class _CompleteProfileState extends State<CompleteProfile> {
                   height: MediaQuery.of(context).size.height / 6,
                 ),
                 Text(
-                  'Complete Profile',
+                  'completeProfileTitle',
                   style: cHeadStyle,
-                ),
+                ).tr(),
                 // SizedBox(
                 //   height: 20.0,
                 // ),
@@ -52,14 +53,14 @@ class _CompleteProfileState extends State<CompleteProfile> {
                     height: 25,
                     width: 25,
                   ),
-                  textFieldTitle: 'Enter Your Name',
+                  textFieldTitle: 'completeProfileName'.tr(),
                   textFieldType: TextInputType.name,
                   onChanged: (value) {
                     name = value;
                   },
                   validator: (value) {
                     if (value.isEmpty || value.length < 3) {
-                      return 'Name length must be valid';
+                      return 'incorretProfileName'.tr();
                     }
                     return null;
                   },
@@ -86,7 +87,7 @@ class _CompleteProfileState extends State<CompleteProfile> {
                     height: 25,
                     width: 25,
                   ),
-                  textFieldTitle: 'Enter Your Email',
+                  textFieldTitle: 'completeProfileEmail'.tr(),
                   textFieldType: TextInputType.emailAddress,
                   onChanged: (value) {
                     email = value;
@@ -95,7 +96,7 @@ class _CompleteProfileState extends State<CompleteProfile> {
                     if (value.isEmpty ||
                         value.length < 8 ||
                         !(value.toString().contains('@'))) {
-                      return 'Enter Valid Email';
+                      return 'incorrectProfileEmail'.tr();
                     }
                     return null;
                   },
@@ -122,7 +123,7 @@ class _CompleteProfileState extends State<CompleteProfile> {
                     height: 25,
                     width: 25,
                   ),
-                  textFieldTitle: 'Referral Code',
+                  textFieldTitle: 'completeProfileReferral'.tr(),
                   onChanged: (value) {
                     referralCode = value;
                   },
@@ -166,7 +167,7 @@ class _CompleteProfileState extends State<CompleteProfile> {
                     ),
                     alignment: Alignment.center,
                     child: Text(
-                      "Next",
+                      "completeProfileNext".tr(),
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w600,
