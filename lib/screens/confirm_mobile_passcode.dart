@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:payso/constants.dart';
 import 'package:payso/model/shared_preference_operations.dart';
 import 'package:payso/screens/passcode_verified_screen.dart';
+import 'package:payso/widgets/back_button_widget.dart';
+import 'package:payso/widgets/passcode_widget.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 class ConfirmMobilePasscode extends StatelessWidget {
@@ -28,77 +30,10 @@ class ConfirmMobilePasscode extends StatelessWidget {
                 SizedBox(
                   height: 40.0,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    FlatButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.arrow_back,
-                            color: cPrimaryColor,
-                          ),
-                          Text(
-                            'Back',
-                            style: TextStyle(
-                              color: cPrimaryColor,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                Image.asset(
-                  'assets/images/passcode.png',
-                ),
-                SizedBox(
-                  height: 40,
-                ),
-                Container(
-                  child: Column(
-                    children: [
-                      Text(
-                        'Confirm Mobile Passcode',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 24,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        'Please Re Enter your 4 digit passcode',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 16,
-                          color: Colors.grey,
-                          letterSpacing: 1.0,
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                FlatButton(
-                  onPressed: null,
-                  child: Text(
-                    'Enter Digits Only',
-                    style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
+                BackButtonWidget(),
+                PasscodeWidget(
+                  title: 'Confirm Passcode',
+                  desc: 'Please Re Enter your 4 digit passcode',
                 ),
                 SizedBox(
                   height: 20,
