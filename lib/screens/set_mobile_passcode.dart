@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:payso/constants.dart';
 import 'package:payso/screens/confirm_mobile_passcode.dart';
+import 'package:payso/widgets/passcode_widget.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 class SetMobilePasscode extends StatelessWidget {
@@ -21,52 +22,9 @@ class SetMobilePasscode extends StatelessWidget {
                 SizedBox(
                   height: 80.0,
                 ),
-                Image.asset(
-                  'assets/images/passcode.png',
-                ),
-                SizedBox(
-                  height: 40,
-                ),
-                Container(
-                  child: Column(
-                    children: [
-                      Text(
-                        'Set Mobile Passcode',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 24,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        'Enter a 4 digit passcode to secure your account',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 16,
-                          color: Colors.grey,
-                          letterSpacing: 1.0,
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                FlatButton(
-                  onPressed: null,
-                  child: Text(
-                    'Enter Digits Only',
-                    style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
+                PasscodeWidget(
+                  title: 'Set Passcode',
+                  desc: 'Enter a 4 digit passcode to secure your account',
                 ),
                 SizedBox(
                   height: 20,
