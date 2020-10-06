@@ -29,12 +29,12 @@ class Secure {
   }
 
   Future<bool> authenticate() async {
-    LocalAuthentication _localAuth = LocalAuthentication();
+    LocalAuthentication localAuth = LocalAuthentication();
 
     bool _authenticated = false;
 
     try {
-      _authenticated = await _localAuth.authenticateWithBiometrics(
+      _authenticated = await localAuth.authenticateWithBiometrics(
         localizedReason: 'Scan your finger to authenticate',
         useErrorDialogs: true,
         stickyAuth: true,
@@ -46,5 +46,10 @@ class Secure {
     }
     print(_authenticated);
     return _authenticated;
+  }
+
+  void cancelAuthentication() {
+    LocalAuthentication _localAuth = LocalAuthentication();
+    _localAuth.stopAuthentication();
   }
 }

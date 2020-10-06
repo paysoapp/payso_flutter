@@ -15,6 +15,8 @@ import 'package:payso/screens/set_mobile_passcode.dart';
 import 'package:payso/screens/splash_screen.dart';
 import 'package:payso/screens/verify_number.dart';
 
+import 'screens/splash_screen.dart';
+
 void main() {
   runApp(EasyLocalization(
       saveLocale: true,
@@ -52,7 +54,8 @@ class _MyAppState extends State<MyApp> {
       supportedLocales: context.supportedLocales,
       locale: context.locale,
       title: 'PaySo App',
-      initialRoute: SplashScreen.id,
+//      initialRoute: SplashScreen.id,
+      initialRoute: SecureScreen.id,
       routes: {
         SplashScreen.id: (context) => SplashScreen(),
         SelectLanguage.id: (context) => SelectLanguage(),

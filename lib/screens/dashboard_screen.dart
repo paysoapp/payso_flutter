@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:payso/screens/register_screen.dart';
 
 import '../constants.dart';
 import '../model/shared_preference_operations.dart';
-import 'intro_slider.dart';
 
 class DashboardScreen extends StatelessWidget {
   SharedPreferenceOperations _prefs = SharedPreferenceOperations();
@@ -21,7 +21,12 @@ class DashboardScreen extends StatelessWidget {
               color: cPrimaryColor,
               onPressed: () async {
                 await _prefs.logout();
-                Navigator.pushNamed(context, IntroSlider.id);
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => RegisterScreen(),
+                  ),
+                );
               },
             ),
           ],

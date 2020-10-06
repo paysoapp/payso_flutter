@@ -50,41 +50,42 @@ class _SelectLanguageState extends State<SelectLanguage> {
                   ),
                   padding: EdgeInsets.symmetric(vertical: 10, horizontal: 30),
                   child: DropdownButton(
-                      isExpanded: true,
-                      iconSize: 30,
-                      iconEnabledColor: Colors.white,
-                      underline: SizedBox(),
-                      hint: Text(
-                        selectedLang,
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
+                    isExpanded: true,
+                    iconSize: 30,
+                    iconEnabledColor: Colors.white,
+                    underline: SizedBox(),
+                    hint: Text(
+                      selectedLang,
+                      style: TextStyle(
+                        color: Colors.white,
                       ),
-                      onChanged: (Language language) {
-                        setState(() {
-                          selectedLang = language.name;
-                        });
+                    ),
+                    onChanged: (Language language) {
+                      setState(() {
+                        selectedLang = language.name;
+                      });
 
-                        if (EasyLocalization.of(context).locale.languageCode !=
-                            language.languageCode) {
-                          context.locale = Locale(
-                              language.languageCode, language.countryCode);
-                        }
-                      },
-                      items: Language.languageList()
-                          .map<DropdownMenuItem<Language>>(
-                              (lang) => DropdownMenuItem(
-                                    value: lang,
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
-                                      children: <Widget>[
-                                        Text(lang.flag),
-                                        Text(lang.name)
-                                      ],
-                                    ),
-                                  ))
-                          .toList()),
+                      if (EasyLocalization.of(context).locale.languageCode !=
+                          language.languageCode) {
+                        context.locale =
+                            Locale(language.languageCode, language.countryCode);
+                      }
+                    },
+                    items: Language.languageList()
+                        .map<DropdownMenuItem<Language>>(
+                          (lang) => DropdownMenuItem(
+                            value: lang,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: <Widget>[
+                                Text(lang.flag),
+                                Text(lang.name)
+                              ],
+                            ),
+                          ),
+                        )
+                        .toList(),
+                  ),
                 ),
               ),
               Padding(

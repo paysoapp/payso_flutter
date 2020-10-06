@@ -1,37 +1,74 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:local_auth/local_auth.dart';
 import 'package:payso/model/secure.dart';
+import 'package:payso/screens/dashboard_screen.dart';
 import 'package:payso/widgets/secure_screen_tile.dart';
 
 import '../constants.dart';
 
-class SecureScreen extends StatelessWidget {
+class SecureScreen extends StatefulWidget {
   static String id = 'secure_screen';
 
-  List<SecureScreenTile> iOSList = [
-    SecureScreenTile(
-      imagePath: './assets/images/fingerprint.png',
-      onTap: null,
-    ),
-    SecureScreenTile(
-      imagePath: './assets/images/fingerprint.png',
-      onTap: null,
-    ),
-  ];
+  @override
+  _SecureScreenState createState() => _SecureScreenState();
+}
 
-  List<SecureScreenTile> androidList = [
-    SecureScreenTile(
-      imagePath: './assets/images/fingerprint.png',
-      onTap: () async {
-        Secure _localAuth = Secure();
-        _localAuth.authenticate();
-      },
-    ),
-  ];
+class _SecureScreenState extends State<SecureScreen> {
+  bool isAuthenticated = false;
+  Secure _localAuth = Secure();
+  List<BiometricType> availableBiometrics;
+
+  Future<List<BiometricType>> getAvailableBiometrics() async {
+    return await _localAuth.getAvailableBiometrics();
+  }
+
+  @override
+  void initState() {
+    getAvailableBiometrics().then((result) {
+      availableBiometrics = result;
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
+    navigateToNext() {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => DashboardScreen(),
+        ),
+      );
+    }
+
+    List<SecureScreenTile> iOSList = [
+      SecureScreenTile(
+        imagePath: availableBiometrics.contains(BiometricType.fingerprint)
+            ? './assets/images/fingerprint.png'
+            : './assets/images/face-unlock.png',
+        onTap: () async {
+          isAuthenticated = await _localAuth.authenticate();
+          if (isAuthenticated) {
+            navigateToNext();
+          }
+        },
+      ),
+    ];
+
+    List<SecureScreenTile> androidList = [
+      SecureScreenTile(
+        imagePath: './assets/images/fingerprint.png',
+        onTap: () async {
+          isAuthenticated = await _localAuth.authenticate();
+          if (isAuthenticated) {
+            navigateToNext();
+          }
+        },
+      ),
+    ];
+
     return Scaffold(
       body: Container(
         padding: EdgeInsets.all(15.0),
@@ -73,7 +110,13 @@ class SecureScreen extends StatelessWidget {
               ),
             ),
             InkWell(
-              onTap: null,
+              onTap: () async {
+                Secure _localAuth = Secure();
+                isAuthenticated = await _localAuth.authenticate();
+                if (isAuthenticated) {
+                  navigateToNext();
+                }
+              },
               child: Container(
                 height: 60,
                 decoration: BoxDecoration(

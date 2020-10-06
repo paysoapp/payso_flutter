@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:payso/constants.dart';
 import 'package:payso/model/shared_preference_operations.dart';
-import 'package:payso/screens/passcode_verified_screen.dart';
+import 'package:payso/screens/secure_screen.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 class ConfirmMobilePasscode extends StatelessWidget {
@@ -160,7 +160,7 @@ class ConfirmMobilePasscode extends StatelessWidget {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => PasscodeVerifiedScreen(),
+                        builder: (context) => SecureScreen(),
                       ),
                     );
                   }

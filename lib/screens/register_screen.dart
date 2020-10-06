@@ -1,8 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:payso/constants.dart';
 import 'package:payso/model/register_user.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:payso/widgets/change_lang_btn_widget.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -50,9 +50,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       "registrationTitle",
                       style: cHeadStyle,
                     ).tr(),
-                    // SizedBox(
-                    //   height: 10.0,
-                    // ),
+                    SizedBox(
+                      height: 20.0,
+                    ),
                     Text(
                       'registrationBody',
                       style: cTextStyle,
