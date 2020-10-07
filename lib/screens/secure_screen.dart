@@ -10,6 +10,9 @@ import '../constants.dart';
 
 class SecureScreen extends StatefulWidget {
   static String id = 'secure_screen';
+  final List<BiometricType> availableBiometrics;
+
+  SecureScreen({this.availableBiometrics});
 
   @override
   _SecureScreenState createState() => _SecureScreenState();
@@ -19,21 +22,14 @@ class _SecureScreenState extends State<SecureScreen> {
   bool isAuthenticated = false;
   Secure _localAuth = Secure();
   List<BiometricType> availableBiometrics;
-
-  Future<List<BiometricType>> getAvailableBiometrics() async {
-    return await _localAuth.getAvailableBiometrics();
-  }
-
   @override
   void initState() {
-    getAvailableBiometrics().then((result) {
-      availableBiometrics = result;
-    });
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    availableBiometrics = widget.availableBiometrics;
     navigateToNext() {
       Navigator.pushReplacement(
         context,

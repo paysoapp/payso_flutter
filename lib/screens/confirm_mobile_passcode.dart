@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:local_auth/local_auth.dart';
 import 'package:payso/constants.dart';
+import 'package:payso/model/secure.dart';
 import 'package:payso/model/shared_preference_operations.dart';
 import 'package:payso/screens/secure_screen.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
@@ -121,7 +123,18 @@ class ConfirmMobilePasscode extends StatelessWidget {
                       if (_formKey.currentState.validate()) {
                         SharedPreferenceOperations _pref =
                             SharedPreferenceOperations();
+                        Secure _localAuth = Secure();
+                        List<BiometricType> availableBiometrics =
+                            await _localAuth.getAvailableBiometrics();
                         await _pref.setPasscode(currScreenPasscode);
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => SecureScreen(
+                              availableBiometrics: availableBiometrics,
+                            ),
+                          ),
+                        );
                       }
                     },
                     backgroundColor: cIntroSliderBg,
@@ -156,11 +169,16 @@ class ConfirmMobilePasscode extends StatelessWidget {
                   if (_formKey.currentState.validate()) {
                     SharedPreferenceOperations _pref =
                         SharedPreferenceOperations();
+                    Secure _localAuth = Secure();
+                    List<BiometricType> availableBiometrics =
+                        await _localAuth.getAvailableBiometrics();
                     await _pref.setPasscode(currScreenPasscode);
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => SecureScreen(),
+                        builder: (context) => SecureScreen(
+                          availableBiometrics: availableBiometrics,
+                        ),
                       ),
                     );
                   }

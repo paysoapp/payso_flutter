@@ -18,12 +18,15 @@ import 'package:payso/screens/verify_number.dart';
 import 'screens/splash_screen.dart';
 
 void main() {
-  runApp(EasyLocalization(
+  runApp(
+    EasyLocalization(
       saveLocale: true,
       supportedLocales: [Locale('en', 'US'), Locale('fil', 'PH')],
       path: 'assets/languages',
       fallbackLocale: Locale('en', 'US'),
-      child: MyApp()));
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatefulWidget {
@@ -54,8 +57,7 @@ class _MyAppState extends State<MyApp> {
       supportedLocales: context.supportedLocales,
       locale: context.locale,
       title: 'PaySo App',
-//      initialRoute: SplashScreen.id,
-      initialRoute: SecureScreen.id,
+      initialRoute: SplashScreen.id,
       routes: {
         SplashScreen.id: (context) => SplashScreen(),
         SelectLanguage.id: (context) => SelectLanguage(),
