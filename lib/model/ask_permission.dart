@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:payso/screens/register_screen.dart';
+import 'package:payso/screens/intro_slider.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class AskPermission {
@@ -33,7 +33,7 @@ class AskPermission {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => RegisterScreen(),
+            builder: (context) => IntroSlider(),
           ),
         );
       }
