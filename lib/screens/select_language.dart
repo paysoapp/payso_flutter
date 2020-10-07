@@ -3,9 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:payso/constants.dart';
 import 'package:payso/model/language.dart';
+import 'package:payso/screens/permission_screen.dart';
 
 import '../model/shared_preference_operations.dart';
-import 'intro_slider.dart';
 
 class SelectLanguage extends StatefulWidget {
   @override
@@ -98,7 +98,8 @@ class _SelectLanguageState extends State<SelectLanguage> {
                     await _prefs.hasSeen('Language');
                     Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(builder: (context) => IntroSlider()),
+                      MaterialPageRoute(
+                          builder: (context) => PermissionScreen()),
                     );
                   },
                   child: Container(
