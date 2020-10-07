@@ -6,7 +6,6 @@ import 'package:payso/widgets/permission_item.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 import '../model/shared_preference_operations.dart';
-import 'register_screen.dart';
 
 class PermissionScreen extends StatelessWidget {
   static String id = 'permission_screen';
@@ -29,16 +28,6 @@ class PermissionScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    changeLocation() async {
-      SharedPreferenceOperations _prefs = SharedPreferenceOperations();
-      if (await _prefs.getSeen('Permissions') == true) {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => RegisterScreen()),
-        );
-      }
-    }
-
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
