@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:local_auth/local_auth.dart';
 import 'package:payso/model/secure.dart';
-import 'package:payso/screens/dashboard_screen.dart';
+import 'package:payso/screens/passcode_verified_screen.dart';
 import 'package:payso/widgets/secure_screen_tile.dart';
 
 import '../constants.dart';
@@ -34,7 +34,7 @@ class _SecureScreenState extends State<SecureScreen> {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => DashboardScreen(),
+          builder: (context) => PasscodeVerifiedScreen(),
         ),
       );
     }
