@@ -5,6 +5,7 @@ import 'package:payso/model/secure.dart';
 import 'package:payso/model/shared_preference_operations.dart';
 import 'package:payso/screens/secure_screen.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class ConfirmMobilePasscode extends StatelessWidget {
   static const String id = 'confirm_mobile_passcode';
@@ -44,12 +45,12 @@ class ConfirmMobilePasscode extends StatelessWidget {
                             color: cPrimaryColor,
                           ),
                           Text(
-                            'Back',
+                            'backButton',
                             style: TextStyle(
                               color: cPrimaryColor,
                               fontWeight: FontWeight.w700,
                             ),
-                          ),
+                          ).tr(),
                         ],
                       ),
                     ),
@@ -65,18 +66,18 @@ class ConfirmMobilePasscode extends StatelessWidget {
                   child: Column(
                     children: [
                       Text(
-                        'Confirm Mobile Passcode',
+                        'confirmPasscodeTitle',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
                           fontSize: 24,
                         ),
-                      ),
+                      ).tr(),
                       SizedBox(
                         height: 10,
                       ),
                       Text(
-                        'Please Re Enter your 4 digit passcode',
+                        'confirmPasscodeBody',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontWeight: FontWeight.w500,
@@ -84,7 +85,7 @@ class ConfirmMobilePasscode extends StatelessWidget {
                           color: Colors.grey,
                           letterSpacing: 1.0,
                         ),
-                      )
+                      ).tr()
                     ],
                   ),
                 ),
@@ -94,13 +95,13 @@ class ConfirmMobilePasscode extends StatelessWidget {
                 FlatButton(
                   onPressed: null,
                   child: Text(
-                    'Enter Digits Only',
+                    'PasscodeDigitsOnly',
                     style: TextStyle(
                       color: Colors.grey,
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
                     ),
-                  ),
+                  ).tr(),
                 ),
                 SizedBox(
                   height: 20,
@@ -111,11 +112,11 @@ class ConfirmMobilePasscode extends StatelessWidget {
                     validator: (value) {
                       currScreenPasscode = int.parse(value);
                       if (value.isEmpty || value.length != 4) {
-                        return 'Please Enter Valid passcode';
+                        return 'incorrectSetPasscode'.tr();
                       } else if (currScreenPasscode != prevScreenPasscode) {
                         print(
                             'Curr: $currScreenPasscode Prev: $prevScreenPasscode');
-                        return "Passcode doesn't match, Please Check!!";
+                        return "incorrectConfirmPasscode".tr();
                       }
                       return null;
                     },
@@ -194,7 +195,7 @@ class ConfirmMobilePasscode extends StatelessWidget {
                   width: MediaQuery.of(context).size.width - 80,
                   alignment: Alignment.center,
                   child: Text(
-                    "Set Passcode",
+                    "confirmPasscodeButton".tr(),
                     style: TextStyle(
                         color: Colors.white, fontWeight: FontWeight.w600),
                   ),
