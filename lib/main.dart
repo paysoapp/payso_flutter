@@ -14,6 +14,7 @@ import 'package:payso/screens/select_language.dart';
 import 'package:payso/screens/set_mobile_passcode.dart';
 import 'package:payso/screens/splash_screen.dart';
 import 'package:payso/screens/verify_number.dart';
+import 'package:payso/services/firebase_operations.dart';
 
 void main() {
   runApp(
@@ -56,6 +57,7 @@ class _MyAppState extends State<MyApp> {
       locale: context.locale,
       title: 'PaySo App',
       initialRoute: SplashScreen.id,
+//      initialRoute: FirebaseOperations.id,
       routes: {
         SplashScreen.id: (context) => SplashScreen(),
         SelectLanguage.id: (context) => SelectLanguage(),
@@ -70,6 +72,7 @@ class _MyAppState extends State<MyApp> {
         PasscodeVerifiedScreen.id: (context) => PasscodeVerifiedScreen(),
         PermissionScreen.id: (context) => PermissionScreen(),
         SecureScreen.id: (context) => SecureScreen(),
+        FirebaseOperations.id: (context) => FirebaseOperations(),
       },
     );
   }
