@@ -15,8 +15,6 @@ import 'package:payso/screens/set_mobile_passcode.dart';
 import 'package:payso/screens/splash_screen.dart';
 import 'package:payso/screens/verify_number.dart';
 
-import 'screens/splash_screen.dart';
-
 void main() {
   runApp(
     EasyLocalization(
