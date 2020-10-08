@@ -1,11 +1,12 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:local_auth/local_auth.dart';
 import 'package:payso/constants.dart';
 import 'package:payso/model/secure.dart';
 import 'package:payso/model/shared_preference_operations.dart';
+import 'package:payso/screens/passcode_verified_screen.dart';
 import 'package:payso/screens/secure_screen.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import 'package:easy_localization/easy_localization.dart';
 
 class ConfirmMobilePasscode extends StatelessWidget {
   static const String id = 'confirm_mobile_passcode';
@@ -56,11 +57,15 @@ class ConfirmMobilePasscode extends StatelessWidget {
                     ),
                   ],
                 ),
+                SizedBox(
+                  height: 80.0,
+                ),
                 Image.asset(
                   'assets/images/passcode.png',
+                  height: MediaQuery.of(context).size.height / 5,
                 ),
                 SizedBox(
-                  height: 40,
+                  height: 50,
                 ),
                 Container(
                   child: Column(
@@ -141,7 +146,7 @@ class ConfirmMobilePasscode extends StatelessWidget {
                     backgroundColor: cIntroSliderBg,
                     appContext: context,
                     length: 4,
-                    obscureText: false,
+                    obscureText: true,
                     pinTheme: PinTheme(
                       selectedFillColor: Colors.grey[300],
                       inactiveColor: Colors.grey[300],
@@ -170,16 +175,11 @@ class ConfirmMobilePasscode extends StatelessWidget {
                   if (_formKey.currentState.validate()) {
                     SharedPreferenceOperations _pref =
                         SharedPreferenceOperations();
-                    Secure _localAuth = Secure();
-                    List<BiometricType> availableBiometrics =
-                        await _localAuth.getAvailableBiometrics();
                     await _pref.setPasscode(currScreenPasscode);
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => SecureScreen(
-                          availableBiometrics: availableBiometrics,
-                        ),
+                        builder: (context) => PasscodeVerifiedScreen(),
                       ),
                     );
                   }

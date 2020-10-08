@@ -4,6 +4,7 @@ import 'package:payso/constants.dart';
 class ProfileTextField extends StatelessWidget {
   final String textFieldTitle;
   final Image textFieldImage;
+  final int textFieldSize;
   final TextInputType textFieldType;
   final Function onChanged;
   final Function validator;
@@ -13,6 +14,7 @@ class ProfileTextField extends StatelessWidget {
       {this.textFieldImage,
       this.textFieldTitle,
       this.textFieldType,
+      this.textFieldSize,
       this.onChanged,
       this.validator,
       this.onFieldSubmitted});
@@ -24,7 +26,7 @@ class ProfileTextField extends StatelessWidget {
       validator: validator,
       onFieldSubmitted: onFieldSubmitted,
       style: cFormFieldStyle,
-      maxLength: 25,
+      maxLength: textFieldSize,
       keyboardType: textFieldType,
       decoration: InputDecoration(
         hintText: textFieldTitle,

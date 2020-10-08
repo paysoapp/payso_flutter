@@ -35,9 +35,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 width: MediaQuery.of(context).size.width,
                 child: Image.asset('./assets/images/register.png'),
               ),
-              // SizedBox(
-              //   height: 40.0,
-              // ),
+              SizedBox(
+                height: 40.0,
+              ),
               Container(
                 padding: EdgeInsets.symmetric(
                   horizontal: 15.0,
@@ -79,15 +79,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   onFieldSubmitted: (value) {
                     if (_formKey.currentState.validate()) {
                       registerUser.registerUser(phoneNumber, context, _auth);
-//                      Navigator.push(
-//                        context,
-//                        MaterialPageRoute(
-//                          builder: (context) => VerifyNumber(
-//                            mobileNumber: phoneNumber,
-//                          ),
-//                        ),
-//                      );
-
                     }
                   },
                   maxLength: 10,
@@ -114,22 +105,24 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             width: 30.0,
                             height: 30.0,
                           ),
-                          // SizedBox(
-                          //   width: 10.0,
-                          // ),
-                          Text('+(91)'),
-                          // SizedBox(
-                          //   width: 14.0,
-                          // ),
+                          SizedBox(
+                            width: 10.0,
+                          ),
+                          Text(
+                            '+(91)',
+                          ),
+                          SizedBox(
+                            width: 10.0,
+                          ),
                         ],
                       ),
                     ),
                   ),
                 ),
               ),
-              // SizedBox(
-              //   height: 20.0,
-              // ),
+              SizedBox(
+                height: 10.0,
+              ),
               Container(
                 padding: EdgeInsets.symmetric(vertical: 40),
                 child: InkWell(

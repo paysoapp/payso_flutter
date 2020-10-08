@@ -1,8 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:payso/constants.dart';
+import 'package:payso/model/user.dart';
 import 'package:payso/screens/set_mobile_passcode.dart';
 import 'package:payso/widgets/profile_text_field.dart';
-import 'package:easy_localization/easy_localization.dart';
 
 class CompleteProfile extends StatefulWidget {
   static const String id = 'complete_profile';
@@ -12,6 +13,7 @@ class CompleteProfile extends StatefulWidget {
 
 class _CompleteProfileState extends State<CompleteProfile> {
   final _formKey = GlobalKey<FormState>();
+  User newUser = User();
   String name = '';
   String email = '';
   String referralCode = '';
@@ -37,16 +39,16 @@ class _CompleteProfileState extends State<CompleteProfile> {
                   'completeProfileTitle',
                   style: cHeadStyle,
                 ).tr(),
-                // SizedBox(
-                //   height: 20.0,
-                // ),
+                SizedBox(
+                  height: 25.0,
+                ),
                 Text(
                   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut viverra sollicitudin commodo.',
                   style: cTextStyle,
                 ),
-                // SizedBox(
-                //   height: 30.0,
-                // ),
+                SizedBox(
+                  height: 30.0,
+                ),
                 ProfileTextField(
                   textFieldImage: Image.asset(
                     'assets/icons/name.png',
@@ -66,21 +68,13 @@ class _CompleteProfileState extends State<CompleteProfile> {
                   },
                   onFieldSubmitted: (value) {
                     if (_formKey.currentState.validate()) {
-                      print('Submit Done');
-//                      Navigator.push(
-//                        context,
-//                        MaterialPageRoute(
-//                          builder: (context) => VerifyNumber(
-//                            mobileNumber: phoneNumber,
-//                          ),
-//                        ),
-//                      );
+                      newUser.setUserName(value);
                     }
                   },
                 ),
-                // SizedBox(
-                //   height: 20.0,
-                // ),
+                SizedBox(
+                  height: 30.0,
+                ),
                 ProfileTextField(
                   textFieldImage: Image.asset(
                     'assets/icons/email.png',
@@ -102,21 +96,13 @@ class _CompleteProfileState extends State<CompleteProfile> {
                   },
                   onFieldSubmitted: (value) {
                     if (_formKey.currentState.validate()) {
-                      print('Submit Done');
-//                      Navigator.push(
-//                        context,
-//                        MaterialPageRoute(
-//                          builder: (context) => VerifyNumber(
-//                            mobileNumber: phoneNumber,
-//                          ),
-//                        ),
-//                      );
+                      newUser.setUserEmail(value);
                     }
                   },
                 ),
-                // SizedBox(
-                //   height: 20.0,
-                // ),
+                SizedBox(
+                  height: 30.0,
+                ),
                 ProfileTextField(
                   textFieldImage: Image.asset(
                     'assets/icons/flag.png',
@@ -124,20 +110,13 @@ class _CompleteProfileState extends State<CompleteProfile> {
                     width: 25,
                   ),
                   textFieldTitle: 'completeProfileReferral'.tr(),
+                  textFieldSize: 8,
                   onChanged: (value) {
                     referralCode = value;
                   },
                   onFieldSubmitted: (value) {
                     if (_formKey.currentState.validate()) {
-                      print('Submit Done');
-//                      Navigator.push(
-//                        context,
-//                        MaterialPageRoute(
-//                          builder: (context) => VerifyNumber(
-//                            mobileNumber: phoneNumber,
-//                          ),
-//                        ),
-//                      );
+                      newUser.setUserReferral(value);
                     }
                   },
                 ),

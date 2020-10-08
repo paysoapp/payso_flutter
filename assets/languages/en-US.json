@@ -43,7 +43,7 @@
   "setPasscodeBody": "Enter a 4 digit passcode to secure your account",
    "PasscodeDigitsOnly": "Enter Digits Only",
   "incorrectSetPasscode": "Please Enter Valid passcode",
-  "setPasscodeButon": "Confirm Passcode",
+  "setPasscodeButton": "Confirm Passcode",
 
   "confirmPasscodeTitle": "Confirm Mobile Passcode",
   "confirmPasscodeBody": "Please Re Enter your 4 digit passcode",

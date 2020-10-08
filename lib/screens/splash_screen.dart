@@ -1,9 +1,11 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:local_auth/local_auth.dart';
+import 'package:payso/model/secure.dart';
 import 'package:payso/model/shared_preference_operations.dart';
-import 'package:payso/screens/login_passcode_screen.dart';
 import 'package:payso/screens/permission_screen.dart';
+import 'package:payso/screens/secure_screen.dart';
 import 'package:payso/screens/select_language.dart';
 
 import 'intro_slider.dart';
@@ -26,9 +28,16 @@ class _SplashScreenState extends State<SplashScreen> {
       Duration(seconds: 3),
       () async {
         if (await _prefs.isUserOldSF() == true) {
+          Secure _localAuth = Secure();
+          List<BiometricType> availableBiometrics =
+              await _localAuth.getAvailableBiometrics();
           Navigator.pushReplacement(
             context,
-            MaterialPageRoute(builder: (context) => LoginPasscodeScreen()),
+            MaterialPageRoute(
+              builder: (context) => SecureScreen(
+                availableBiometrics: availableBiometrics,
+              ),
+            ),
           );
         } else if (await _prefs.getSeen('Language') == false) {
           Navigator.pushReplacement(

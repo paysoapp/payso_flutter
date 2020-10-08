@@ -1,8 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:payso/constants.dart';
 import 'package:payso/screens/confirm_mobile_passcode.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import 'package:easy_localization/easy_localization.dart';
 
 class SetMobilePasscode extends StatelessWidget {
   static const String id = 'set_mobile_passcode';
@@ -15,7 +15,7 @@ class SetMobilePasscode extends StatelessWidget {
       body: Form(
         key: _formKey,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Column(
               children: [
@@ -24,9 +24,10 @@ class SetMobilePasscode extends StatelessWidget {
                 ),
                 Image.asset(
                   'assets/images/passcode.png',
+                  height: MediaQuery.of(context).size.height / 5,
                 ),
                 SizedBox(
-                  height: 40,
+                  height: 50,
                 ),
                 Container(
                   child: Column(
@@ -99,7 +100,7 @@ class SetMobilePasscode extends StatelessWidget {
                       backgroundColor: cIntroSliderBg,
                       appContext: context,
                       length: 4,
-                      obscureText: false,
+                      obscureText: true,
                       pinTheme: PinTheme(
                         selectedFillColor: Colors.grey[300],
                         inactiveColor: Colors.grey[300],

@@ -1,15 +1,15 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:payso/constants.dart';
 import 'package:payso/model/register_user.dart';
 import 'package:payso/screens/mobile_verified_screen.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import 'package:easy_localization/easy_localization.dart';
+
 class VerifyNumber extends StatefulWidget {
   final String mobileNumber;
   final String verificationId;
   static const String id = 'verify_number';
-
 
   VerifyNumber({this.mobileNumber, this.verificationId});
 
@@ -19,7 +19,7 @@ class VerifyNumber extends StatefulWidget {
 
 class _VerifyNumberState extends State<VerifyNumber> {
   String otp = '';
-  final String otpInvalid=tr("otpInvalid");
+  final String otpInvalid = tr("otpInvalid");
   final _formKey = GlobalKey<FormState>();
   RegisterUser registerUser = RegisterUser();
   FirebaseAuth _auth = FirebaseAuth.instance;
@@ -40,9 +40,9 @@ class _VerifyNumberState extends State<VerifyNumber> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              // SizedBox(
-              //   height: 30.0,
-              // ),
+              SizedBox(
+                height: 30.0,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -68,17 +68,17 @@ class _VerifyNumberState extends State<VerifyNumber> {
                   ),
                 ],
               ),
-              // SizedBox(
-              //   height: 30,
-              // ),
+              SizedBox(
+                height: 30,
+              ),
               Image.asset(
                 'assets/images/verify_number.png',
                 width: MediaQuery.of(context).size.width -
                     MediaQuery.of(context).size.width / 4,
               ),
-              // SizedBox(
-              //   height: 40,
-              // ),
+              SizedBox(
+                height: 40,
+              ),
               Container(
                 child: Column(
                   children: [
@@ -90,11 +90,11 @@ class _VerifyNumberState extends State<VerifyNumber> {
                         fontSize: 24,
                       ),
                     ).tr(),
-                    // SizedBox(
-                    //   height: 10,
-                    // ),
+                    SizedBox(
+                      height: 30,
+                    ),
                     Text(
-                      'verifyNumberBody'.tr()+' \n${widget.mobileNumber}',
+                      'verifyNumberBody'.tr() + ' \n${widget.mobileNumber}',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontWeight: FontWeight.w500,
@@ -106,9 +106,9 @@ class _VerifyNumberState extends State<VerifyNumber> {
                   ],
                 ),
               ),
-              // SizedBox(
-              //   height: 20,
-              // ),
+              SizedBox(
+                height: 20,
+              ),
               FlatButton(
                 onPressed: () {
                   print("Resend OTP");
@@ -122,9 +122,9 @@ class _VerifyNumberState extends State<VerifyNumber> {
                   ),
                 ).tr(),
               ),
-              // SizedBox(
-              //   height: 20,
-              // ),
+              SizedBox(
+                height: 20,
+              ),
               Padding(
                 padding: const EdgeInsets.only(left: 20, right: 20),
                 child: PinCodeTextField(
@@ -155,8 +155,7 @@ class _VerifyNumberState extends State<VerifyNumber> {
                             builder: (BuildContext context) {
                               return AlertDialog(
                                 title: Text('incorrectTitle').tr(),
-                                content:
-                                    Text("incorrectOTPContent").tr(),
+                                content: Text("incorrectOTPContent").tr(),
                                 actions: [
                                   FlatButton(
                                     child: Text("incorrectButton").tr(),
@@ -199,9 +198,9 @@ class _VerifyNumberState extends State<VerifyNumber> {
                   },
                 ),
               ),
-              // SizedBox(
-              //   height: 20,
-              // ),
+              SizedBox(
+                height: 20,
+              ),
               InkWell(
                 onTap: () {
                   if (_formKey.currentState.validate()) {
@@ -225,8 +224,7 @@ class _VerifyNumberState extends State<VerifyNumber> {
                             builder: (BuildContext context) {
                               return AlertDialog(
                                 title: Text('incorrectTitle').tr(),
-                                content:
-                                    Text("incorrectOTPContent").tr(),
+                                content: Text("incorrectOTPContent").tr(),
                                 actions: [
                                   FlatButton(
                                     child: Text("incorrectButton").tr(),

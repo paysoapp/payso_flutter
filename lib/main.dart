@@ -57,7 +57,6 @@ class _MyAppState extends State<MyApp> {
       locale: context.locale,
       title: 'PaySo App',
       initialRoute: SplashScreen.id,
-//      initialRoute: FirebaseOperations.id,
       routes: {
         SplashScreen.id: (context) => SplashScreen(),
         SelectLanguage.id: (context) => SelectLanguage(),
