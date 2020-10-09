@@ -33,7 +33,7 @@ class FirebaseOperations extends StatelessWidget {
             'userEmail': user.userEmail,
             'userReferral': user.userReferral,
           })
-          .then((value) => print('Data Entered Succesfully'))
+          .then((value) => print('Data Entered Successfully'))
           .catchError(
             (e) {
               print(e);
