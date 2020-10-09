@@ -14,7 +14,6 @@ import 'package:payso/screens/select_language.dart';
 import 'package:payso/screens/set_mobile_passcode.dart';
 import 'package:payso/screens/splash_screen.dart';
 import 'package:payso/screens/verify_number.dart';
-import 'package:payso/services/firebase_operations.dart';
 
 void main() {
   runApp(
@@ -71,7 +70,6 @@ class _MyAppState extends State<MyApp> {
         PasscodeVerifiedScreen.id: (context) => PasscodeVerifiedScreen(),
         PermissionScreen.id: (context) => PermissionScreen(),
         SecureScreen.id: (context) => SecureScreen(),
-        FirebaseOperations.id: (context) => FirebaseOperations(),
       },
     );
   }

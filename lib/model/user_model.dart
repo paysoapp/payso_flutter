@@ -1,10 +1,16 @@
-class User {
+class UserModel {
   String userId;
   String userName;
   String userEmail;
+  String userMobile;
   String userReferral;
 
-  User({this.userId, this.userName, this.userEmail, this.userReferral});
+  UserModel(
+      {this.userId,
+      this.userName,
+      this.userEmail,
+      this.userMobile,
+      this.userReferral});
 
   getUserId() {
     return this.userId;
@@ -16,6 +22,10 @@ class User {
 
   getUserName() {
     return this.userName;
+  }
+
+  getUserMobile() {
+    return this.userMobile;
   }
 
   getUserReferral() {
@@ -32,6 +42,10 @@ class User {
 
   setUserName(userName) {
     this.userName = userName;
+  }
+
+  setUserMobile(userMobile) {
+    this.userMobile = userMobile;
   }
 
   setUserReferral(userReferral) {

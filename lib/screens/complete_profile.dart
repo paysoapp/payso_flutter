@@ -1,23 +1,29 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:payso/constants.dart';
-import 'package:payso/model/user.dart';
+import 'package:payso/model/user_model.dart';
 import 'package:payso/screens/set_mobile_passcode.dart';
+import 'package:payso/services/firebase_operations.dart';
 import 'package:payso/widgets/profile_text_field.dart';
 
 class CompleteProfile extends StatefulWidget {
   static const String id = 'complete_profile';
+  final String phoneNumber;
+  CompleteProfile({this.phoneNumber});
+
   @override
   _CompleteProfileState createState() => _CompleteProfileState();
 }
 
 class _CompleteProfileState extends State<CompleteProfile> {
   final _formKey = GlobalKey<FormState>();
-  User newUser = User();
+  FirebaseOperations _firebaseOperations = FirebaseOperations();
+  UserModel newUser = UserModel();
   String name = '';
   String email = '';
   String referralCode = '';
-
+  String mobileNumber = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,7 +74,7 @@ class _CompleteProfileState extends State<CompleteProfile> {
                   },
                   onFieldSubmitted: (value) {
                     if (_formKey.currentState.validate()) {
-                      newUser.setUserName(value);
+                      name = value;
                     }
                   },
                 ),
@@ -96,7 +102,7 @@ class _CompleteProfileState extends State<CompleteProfile> {
                   },
                   onFieldSubmitted: (value) {
                     if (_formKey.currentState.validate()) {
-                      newUser.setUserEmail(value);
+                      email = value;
                     }
                   },
                 ),
@@ -116,7 +122,7 @@ class _CompleteProfileState extends State<CompleteProfile> {
                   },
                   onFieldSubmitted: (value) {
                     if (_formKey.currentState.validate()) {
-                      newUser.setUserReferral(value);
+                      referralCode = value;
                     }
                   },
                 ),
@@ -124,9 +130,18 @@ class _CompleteProfileState extends State<CompleteProfile> {
                   height: MediaQuery.of(context).size.height / 6,
                 ),
                 InkWell(
-                  onTap: () {
+                  onTap: () async {
                     //TODO: Navigate to Success Page
                     if (_formKey.currentState.validate()) {
+                      var userId = await FirebaseAuth.instance.currentUser.uid;
+                      mobileNumber =
+                          await FirebaseAuth.instance.currentUser.phoneNumber;
+                      newUser.setUserId(userId);
+                      newUser.setUserMobile(mobileNumber);
+                      newUser.setUserEmail(email);
+                      newUser.setUserName(name);
+                      newUser.setUserReferral(referralCode);
+                      await _firebaseOperations.addUser(newUser);
                       Navigator.push(
                         context,
                         MaterialPageRoute(
